@@ -72,7 +72,7 @@
                         <top-margin>50</top-margin>
                         <bottom-margin>50</bottom-margin>
                         <edges>Tile</edges>
-                        <fill>Tile</fill>
+                        <fill>Stretch</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Top-left</hotspot>
                         <seams>Overlap</seams>
@@ -108,8 +108,8 @@
                         <right-margin>50</right-margin>
                         <top-margin>50</top-margin>
                         <bottom-margin>50</bottom-margin>
-                        <edges>Tile</edges>
-                        <fill>Tile</fill>
+                        <edges>Stretch</edges>
+                        <fill>Stretch</fill>
                         <initial-visibility>Visible</initial-visibility>
                         <hotspot>Top-left</hotspot>
                         <seams>Overlap</seams>

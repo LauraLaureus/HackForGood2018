@@ -135,6 +135,9 @@
                         <action id="21" name="Paste Layer" sid="975719302344599" type="Canvas">
                             <param id="0" name="Layer">&quot;Current&quot;</param>
                         </action>
+                        <action id="-16" name="Wait" sid="451917647626720" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
                         <action id="-13" name="Set boolean" sid="574541776862081" type="Canvas">
                             <param id="0" name="Instance variable">LoadingScreenshot</param>
                             <param id="1" name="Value">1</param>
@@ -165,7 +168,7 @@
                             <param id="0" name="Instance variable">LoadingScreenshot</param>
                             <param id="1" name="Value">0</param>
                         </action>
-                        <action disabled="1" id="-10" name="Set value" sid="205508649806754" type="Canvas">
+                        <action id="-10" name="Set value" sid="205508649806754" type="Canvas">
                             <param id="0" name="Instance variable">LastScreen</param>
                             <param id="1" name="Value">&quot;&quot;</param>
                         </action>
@@ -349,7 +352,7 @@
                                     <param id="0" name="Variable">FakeLoading</param>
                                     <param id="1" name="Value">100</param>
                                 </action>
-                                <action id="0" name="Call function" sid="436504610069592" type="Function">
+                                <action disabled="1" id="0" name="Call function" sid="436504610069592" type="Function">
                                     <param id="0" name="Name">&quot;BlockUI&quot;</param>
                                     <param id="1" name="Parameter {n}">&quot;Finished!&#x0D;&#x0A;100%&quot;</param>
                                 </action>
@@ -360,7 +363,7 @@
                                 <condition id="-22" name="Else" sid="936132879055775" type="System" />
                             </conditions>
                             <actions>
-                                <action id="0" name="Call function" sid="238923600138223" type="Function">
+                                <action disabled="1" id="0" name="Call function" sid="238923600138223" type="Function">
                                     <param id="0" name="Name">&quot;BlockUI&quot;</param>
                                     <param id="1" name="Parameter {n}">&quot;Finishing stuff... please be patient&#x0D;&#x0A;&quot;&amp;FakeLoading-1&amp;&quot;%&quot;</param>
                                 </action>
@@ -368,7 +371,7 @@
                                     <param id="0" name="Variable">FakeLoading</param>
                                     <param id="1" name="Value">1</param>
                                 </action>
-                                <action id="-9" name="Set value" sid="537857350218627" type="System">
+                                <action disabled="1" id="-9" name="Set value" sid="537857350218627" type="System">
                                     <param id="0" name="Variable">FakeLoading</param>
                                     <param id="1" name="Value">max(int(Browser.ExecJS(&quot;percentComplete;&quot;)),1)</param>
                                 </action>
@@ -393,6 +396,9 @@
                         <action id="0" name="Call function" sid="639189765231953" type="Function">
                             <param id="0" name="Name">&quot;Photo_Result&quot;</param>
                             <param id="1" name="Parameter {n}">(Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="0" name="Execute" sid="980710953924860" type="CallJS">
+                            <param id="0" name="Value">&quot;imageUploaded = 0;&quot;</param>
                         </action>
                         <action id="-12" name="Set group active" sid="117102128394713" type="System">
                             <param id="0" name="Group name">&quot;CheckOut&quot;</param>

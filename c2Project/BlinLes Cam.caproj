@@ -46,7 +46,7 @@
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
-        <prop name="Enable WebGL">On</prop>
+        <prop name="Enable WebGL">Off</prop>
         <prop name="Fullscreen in browser">Scale outer</prop>
         <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
@@ -116,15 +116,15 @@
                 <plugin id="Sprite" />
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="268119155401988" speed="5">
-                        <frame duration="1" hotspotX="0.508547" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\logo.png">
+                        <frame duration="1" hotspotX="0.484568" hotspotY="0.654867" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\logo.png">
                             <collision-poly>
                                 <point x="0" y="0" />
-                                <point x="0.858207" y="0.390625" />
-                                <point x="1" y="0.467969" />
-                                <point x="0.858207" y="0.571094" />
-                                <point x="0.502137" y="1" />
+                                <point x="0.955741" y="0.328236" />
+                                <point x="1" y="0.560928" />
+                                <point x="0.955741" y="0.871183" />
+                                <point x="0.476205" y="1" />
                                 <point x="0" y="1" />
-                                <point x="0" y="0.467969" />
+                                <point x="0" y="0.560928" />
                             </collision-poly>
                         </frame>
                     </animation>
@@ -282,6 +282,78 @@
         </object-type>
         <object-type name="lblInit2" sid="483770413417296">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="welcomeScreenshot" sid="353796819982960">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="787827071541117" speed="5">
+                    <frame duration="1" format="jpeg" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\welcome.png" quality="75">
+                        <collision-poly>
+                            <point x="0.5" y="0.388769" />
+                            <point x="0.5" y="0.074514" />
+                            <point x="0.586111" y="0.321814" />
+                            <point x="0.325" y="0.475162" />
+                            <point x="0.5" y="0.420086" />
+                            <point x="0.661111" y="0.485961" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TiledBackground" sid="224486247677221">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Anchor" sid="651893928720725">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="description" sid="617442929785957">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="254521909478869" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\description.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="fake" sid="249222526406959">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="188614631464664">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="599615727380542" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.500443" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\fake.png" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="sprFakePhoto" sid="599781969069534">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="7" loop="1" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="594468813185236" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Text" sid="334035470989077">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="fakeComments" sid="488377577064968">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="788227703190021" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families>

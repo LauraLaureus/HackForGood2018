@@ -86,6 +86,11 @@
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;IDLE &quot; &amp; Dictionary.Get(LayoutName&amp;&quot;_help&quot;)</param>
                         </action>
+                        <action behavior="Timer" id="0" name="Start timer" sid="718297815197635" type="sysTouchStart">
+                            <param id="0" name="Duration">10</param>
+                            <param id="1" name="Type">0</param>
+                            <param id="2" name="Tag">&quot;idle&quot;</param>
+                        </action>
                     </actions>
                 </event-block>
             </sub-events>

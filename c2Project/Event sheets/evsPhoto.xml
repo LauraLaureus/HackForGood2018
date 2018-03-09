@@ -160,10 +160,6 @@
                     <param id="0" name="Variable">PhotoStatus</param>
                     <param id="1" name="Value">1</param>
                 </action>
-                <action id="0" name="Call function" sid="778754685287979" type="Function">
-                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
-                    <param id="1" name="Parameter {n}">&quot;Snapping photo&quot;</param>
-                </action>
                 <action id="-16" name="Wait" sid="228103643527614" type="System">
                     <param id="0" name="Seconds">0.1</param>
                 </action>
@@ -179,6 +175,10 @@
                 </action>
                 <action id="-16" name="Wait" sid="250186730822850" type="System">
                     <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="0" name="Call function" sid="778754685287979" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Snapping photo, please wait&quot;</param>
                 </action>
                 <action id="-15" name="Set visible" sid="726814692874594" type="Canvas">
                     <param id="0" name="Visibility">1</param>
@@ -244,6 +244,9 @@
                 <action id="-15" name="Set visible" sid="603662415732986" type="lblInit">
                     <param id="0" name="Visibility">0</param>
                 </action>
+                <action id="-16" name="Wait" sid="744384335488167" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
                 <action id="-27" name="Snapshot canvas" sid="447957914028279" type="System">
                     <param id="0" name="Format">0</param>
                     <param id="1" name="JPEG quality">75</param>
@@ -260,7 +263,7 @@
                 </action>
                 <action id="13" name="Invoke download" sid="199130051920173" type="Browser">
                     <param id="0" name="URL">CanvasSnapshot</param>
-                    <param id="1" name="Filename">&quot;blincam&quot;&amp;left(lblInit2.Text, 100)&amp;&quot;.png&quot;</param>
+                    <param id="1" name="Filename">&quot;blincam&quot;&amp;left(lblInit2.Text, 50)&amp;&quot;.png&quot;</param>
                 </action>
                 <action id="-4" name="Set layer visible" sid="585930791385101" type="System">
                     <param id="0" name="Layer">&quot;ScrenShot&quot;</param>

@@ -21,9 +21,8 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="14" name="Log" sid="599181367281585" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;PrevPhoto&quot;</param>
+                <action id="5" name="Set frame" sid="624863826421343" type="sprFakePhoto">
+                    <param id="0" name="Frame number">Self.AnimationFrame+1</param>
                 </action>
             </actions>
         </event-block>
@@ -34,9 +33,8 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="14" name="Log" sid="234406614245597" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;NextPhoto&quot;</param>
+                <action id="5" name="Set frame" sid="803624558369621" type="sprFakePhoto">
+                    <param id="0" name="Frame number">Self.AnimationFrame-1</param>
                 </action>
             </actions>
         </event-block>
@@ -63,6 +61,21 @@
                 <action id="0" name="Call function" sid="249532052975919" type="Function">
                     <param id="0" name="Name">&quot;GoToLvl&quot;</param>
                     <param id="1" name="Parameter {n}">&quot;lvlComments&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="761759392981230">
+            <conditions>
+                <condition id="6" name="On frame changed" sid="768863958514978" type="sprFakePhoto" />
+            </conditions>
+            <actions>
+                <action id="7" name="Stop speaking" sid="490116232264036" type="UserMedia" />
+                <action id="0" name="Set text" sid="622014053329846" type="Text">
+                    <param id="0" name="Text">choose(&quot;A nice photo of something, cool!&quot;,&quot;It seems is a person or animal or maybe a landscape&quot;, &quot;Is like a photo but with an image inside, It&apos;s a mock-up&quot;)</param>
+                </action>
+                <action id="0" name="Call function" sid="774418202743243" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">Text.Text &amp; &quot; 200 likes and 5 comments. Swipe right to know more.&quot;</param>
                 </action>
             </actions>
         </event-block>

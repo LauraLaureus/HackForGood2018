@@ -21,9 +21,9 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="14" name="Log" sid="208677361692655" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;Prev comment&quot;</param>
+                <action id="0" name="Call function" sid="112097190363275" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Prev comment, HI&quot;</param>
                 </action>
             </actions>
         </event-block>
@@ -34,9 +34,9 @@
                 </condition>
             </conditions>
             <actions>
-                <action id="14" name="Log" sid="452222915547200" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;Next photo&quot;</param>
+                <action id="0" name="Call function" sid="244238403206286" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Next comment, HI&quot;</param>
                 </action>
             </actions>
         </event-block>
