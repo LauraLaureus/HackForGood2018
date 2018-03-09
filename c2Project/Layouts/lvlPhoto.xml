@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2layout>
-    <name>lvlIntro</name>
+    <name>lvlPhoto</name>
     <sid>8873350371196689</sid>
-    <event-sheet>Event sheet 1</event-sheet>
+    <event-sheet>lvlMain</event-sheet>
     <size>
         <width>720</width>
         <height>1280</height>
@@ -75,6 +75,46 @@
                         <hotspotY>0</hotspotY>
                     </world>
                 </instance>
+                <instance type="UserMedia" uid="9">
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>10</x>
+                        <y>103</y>
+                        <z>0</z>
+                        <width>683</width>
+                        <height>494</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+                <instance type="Canvas" uid="10">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <effect>(none)</effect>
+                        <hotspot>Top-left</hotspot>
+                    </properties>
+                    <instance-variables>
+                        <LastScreen></LastScreen>
+                        <LoadingScreenshot>false</LoadingScreenshot>
+                    </instance-variables>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>16</x>
+                        <y>105</y>
+                        <z>0</z>
+                        <width>677</width>
+                        <height>495</height>
+                        <depth>0</depth>
+                        <hotspotX>0</hotspotX>
+                        <hotspotY>0</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
             </instances>
             <effects />
         </layer>
@@ -84,11 +124,6 @@
         <instance type="CallJS" uid="2">
             <properties>
                 <scriptfile>upload.js</scriptfile>
-            </properties>
-        </instance>
-        <instance type="CallJS2" uid="6">
-            <properties>
-                <scriptfile>myScripts.js</scriptfile>
             </properties>
         </instance>
     </nonworld-instances>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>Event sheet 1</name>
+    <name>lvlMain</name>
     <events>
         <variable comment="Sito base" constant="1" name="CCON_BASEURL" sid="594909944114999" static="0" type="text">http://25inch.me</variable>
         <variable comment="Sito per upload foto" constant="1" name="CANVASUPLOAD_URL" sid="423671111371607" static="0" type="text">/wp-content/themes/zerif-pro-child/avatar-creator/canvasupload.php</variable>
@@ -139,41 +139,42 @@
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;Make screenshot!&quot;</param>
                         </action>
-                        <action id="-4" name="Set layer visible" sid="605431082801561" type="System">
-                            <param id="0" name="Layer">&quot;AvatarEditor&quot;</param>
-                            <param id="1" name="Visibility">1</param>
+                        <action id="21" name="Paste Layer" sid="518399370498081" type="Canvas">
+                            <param id="0" name="Layer">0</param>
                         </action>
-                        <action id="-20" name="Set layout scale" sid="461256243573510" type="System">
-                            <param id="0" name="Scale">1.4</param>
+                        <action id="-13" name="Set boolean" sid="395678221968663" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                            <param id="1" name="Value">1</param>
                         </action>
-                        <action id="-6" name="Scroll to Y" sid="872137174415999" type="System">
-                            <param id="0" name="Y">350</param>
-                        </action>
-                        <action id="-27" name="Snapshot canvas" sid="830823768948066" type="System">
-                            <param id="0" name="Format">1</param>
-                            <param id="1" name="JPEG quality">90</param>
+                        <action id="-10" name="Set value" sid="933821309693828" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">Self.imageUrl</param>
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="894503227429681">
+                <event-block sid="302734414365964">
                     <conditions>
-                        <condition id="-26" name="On canvas snapshot" sid="682162446966607" type="System" />
+                        <condition id="-8" name="Is boolean instance variable set" sid="992896609549745" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="567304376850287" type="System">
+                            <param id="0" name="First value">len(Canvas.LastScreen)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
                     </conditions>
                     <actions>
-                        <action id="14" name="Log" sid="525172920037890" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;Uploading image to &quot; &amp; CCON_BASEURL &amp; CANVASUPLOAD_URL</param>
-                        </action>
-                        <action id="0" name="Call function" sid="363580824277652" type="Function">
+                        <action id="0" name="Call function" sid="644193369203847" type="Function">
                             <param id="0" name="Name">&quot;Pic_UploadPreview&quot;</param>
-                            <param id="1" name="Parameter {n}"></param>
+                            <param id="1" name="Parameter {n}">Canvas.LastScreen</param>
                         </action>
-                        <action id="-20" name="Set layout scale" sid="208407613060437" type="System">
-                            <param id="0" name="Scale">1</param>
+                        <action id="-13" name="Set boolean" sid="954231920340847" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                            <param id="1" name="Value">0</param>
                         </action>
-                        <action id="0" name="Call function" sid="857757798915348" type="Function">
-                            <param id="0" name="Name">&quot;BlockUI&quot;</param>
-                            <param id="1" name="Parameter {n}">&quot;Uploading your preview...&quot;</param>
+                        <action disabled="1" id="-10" name="Set value" sid="740305646407439" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">&quot;&quot;</param>
                         </action>
                     </actions>
                 </event-block>
@@ -208,11 +209,25 @@
                         </condition>
                     </conditions>
                     <actions>
-                        <action id="2" name="Post to URL" sid="940769411022215" type="AJAX">
+                        <action disabled="1" id="2" name="Post to URL" sid="940769411022215" type="AJAX">
                             <param id="0" name="Tag">&quot;ImageUpload&quot;</param>
                             <param id="1" name="URL">CCON_BASEURL &amp; CANVASUPLOAD_URL</param>
                             <param id="2" name="Data">&quot;&quot;</param>
                             <param id="3" name="Method">&quot;POST&quot;</param>
+                        </action>
+                        <action id="0" name="Execute" sid="779280487471446" type="CallJS">
+                            <param id="0" name="Value">&quot;processPhoto(&apos;&quot;&amp;Canvas.LastScreen&amp;&quot;&apos;,&apos;&quot;&amp;CustomName&amp;&quot;_big.jpg&apos;);&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="815211734759247" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="938482785969453" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="0" name="Call function" sid="737047644033128" type="Function">
+                            <param id="0" name="Name">&quot;PreviewUploaded&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
                 </event-block>
@@ -222,15 +237,7 @@
                             <param id="0" name="Name">&quot;Pic_UploadImage&quot;</param>
                         </condition>
                     </conditions>
-                    <actions>
-                        <action id="0" name="Execute" sid="779280487471446" type="CallJS">
-                            <param id="0" name="Value">&quot;uploadfilex(&apos;&quot;&amp;CCON_BASEURL &amp; CANVASUPLOAD_URL&amp;&quot;&apos;,&apos;&quot;&amp;CustomName&amp;&quot;_big.jpg&apos;);&quot;</param>
-                        </action>
-                        <action id="14" name="Log" sid="143720321268379" type="Browser">
-                            <param id="0" name="Type">0</param>
-                            <param id="1" name="Message">&quot;CALLJS uploadfilex(&apos;&quot;&amp;CCON_BASEURL &amp; CANVASUPLOAD_URL&amp;&quot;&apos;,&apos;&quot;&amp;CustomName&amp;&quot;_big.jpg);&quot;</param>
-                        </action>
-                    </actions>
+                    <actions />
                 </event-block>
                 <event-block sid="545512706841268">
                     <conditions>
@@ -528,6 +535,160 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" inactive="1" sid="911437267986145" title="CheckOut">
+            <sub-events>
+                <variable constant="0" name="IsImageUploaded" sid="620945119438341" static="1" type="number">-1</variable>
+                <variable constant="0" name="FakeLoading" sid="339047231653012" static="1" type="number">0</variable>
+                <event-block sid="262721063845619">
+                    <conditions>
+                        <condition id="0" name="On function" sid="833909858424965" type="Function">
+                            <param id="0" name="Name">&quot;PreviewUploaded&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="776454503025025" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="419156059177052">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="150801719430916" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="823114825709155" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="701067810765323" type="System">
+                            <param id="0" name="Group name">&quot;PhasesChange&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="279477367926207" type="System">
+                            <param id="0" name="Group name">&quot;AvatarEditor&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="925904239100161" type="System">
+                            <param id="0" name="Seconds">CCON_TIMEOUT</param>
+                        </action>
+                        <action id="0" name="Call function" sid="231178467177336" type="Function">
+                            <param id="0" name="Name">&quot;UnBlockUI&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="305032456567736" type="System">
+                            <param id="0" name="Group name">&quot;PhasesChange&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="730462896758355" type="System">
+                            <param id="0" name="Group name">&quot;AvatarEditor&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="161995408161824" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="0" name="Call function" sid="370309000809471" type="Function">
+                            <param id="0" name="Name">&quot;ShowError&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Something goes wrong on checkout...please try again&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="405813955669544">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="202538366971210" type="System">
+                            <param id="0" name="Interval (seconds)">0.5</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="790961140016558" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="794474919603509" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">int(Browser.ExecJS(&quot;imageUploaded;&quot;))</param>
+                        </action>
+                        <action id="14" name="Log" sid="511437079432485" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Status &quot; &amp;IsImageUploaded</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="226287404788062">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="155133756850432" type="System">
+                                    <param id="0" name="Variable">IsImageUploaded</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="352044687993062" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">100</param>
+                                </action>
+                                <action id="0" name="Call function" sid="670134172885305" type="Function">
+                                    <param id="0" name="Name">&quot;BlockUI&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;Finished!&#x0D;&#x0A;100%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="269794776563028">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="165542700573205" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="519547796606433" type="Function">
+                                    <param id="0" name="Name">&quot;BlockUI&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;Finishing stuff... please be patient&#x0D;&#x0A;&quot;&amp;FakeLoading-1&amp;&quot;%&quot;</param>
+                                </action>
+                                <action disabled="1" id="-10" name="Add to" sid="460824839581750" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="329703525997274" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">max(int(Browser.ExecJS(&quot;percentComplete;&quot;)),1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="171167292392975">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="406784950439279" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="399502296323976" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="505242913868013" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="0" name="Call function" sid="447725158534431" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                            <param id="1" name="Parameter {n}">(Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="14" name="Log" sid="582085704370028" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;RESULT &quot; &amp; (Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="590530130000130" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">&quot;&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="741262712265650" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
         <event-group description="" sid="660997081783785" title="Lib_RequestFullScreen">
             <sub-events>
                 <event-block sid="917173611028117">
@@ -548,5 +709,28 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-block sid="509110588046684">
+            <conditions>
+                <condition id="14" name="On tap" sid="863376270267438" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="0" name="Request camera" sid="881582956557869" type="UserMedia">
+                    <param id="0" name="Source">0</param>
+                    <param id="1" name="Preferred width">0</param>
+                    <param id="2" name="Preferred height">0</param>
+                </action>
+                <action id="0" name="Call function" sid="207869216310531" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Snapping photo&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="484674254620633" type="System">
+                    <param id="0" name="Seconds">1.0</param>
+                </action>
+                <action id="0" name="Call function" sid="170398570797532" type="Function">
+                    <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
     </events>
 </c2eventsheet>

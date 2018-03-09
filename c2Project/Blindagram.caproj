@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>New project</name>
+    <name>Blindagram</name>
     <description></description>
     <version>1.0.0.0</version>
     <author></author>
@@ -17,6 +17,7 @@
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
+        <plugin author="R0J0hound" id="c2canvas" version="2">Canvas</plugin>
         <plugin author="Joe7" id="cjs" version="1">Call JS</plugin>
         <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
     </used-plugins>
@@ -72,19 +73,24 @@
         <object-type name="Browser" sid="154533692587050">
             <plugin id="Browser" />
         </object-type>
-        <object-type global="1" name="CallJS2" sid="545310498218624">
-            <plugin id="cjs" />
-        </object-type>
         <object-type name="ChatWindow" sid="613100327990384">
             <plugin id="TextBox" />
+        </object-type>
+        <object-type name="Canvas" sid="608210372632319">
+            <plugin id="c2canvas" />
+            <instance-variables>
+                <instance-variable name="LastScreen" sid="355382543332734" type="string" />
+                <instance-variable name="LoadingScreenshot" sid="855649994948385" type="boolean" />
+            </instance-variables>
+            <texture />
         </object-type>
     </object-folder>
     <families />
     <layout-folder>
-        <layout>lvlIntro.xml</layout>
+        <layout>lvlPhoto.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>Event sheet 1.xml</event-sheet>
+        <event-sheet>lvlMain.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AJAX" uid="0" />
@@ -107,5 +113,6 @@
             <file name="icon-256.png" />
             <file name="loading-logo.png" />
         </file-folder>
+        <file name="upload.js" />
     </files-folder>
 </c2project>
