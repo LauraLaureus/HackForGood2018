@@ -3,7 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>libPhotoAnalyze</name>
     <events>
-        <event-block sid="922402731391240">
+        <event-block disabled="1" sid="922402731391240">
             <conditions>
                 <condition id="0" name="On function" sid="930984012021996" type="Function">
                     <param id="0" name="Name">&quot;SnapPhoto&quot;</param>
@@ -17,7 +17,7 @@
         </event-block>
         <event-group description="" sid="114182681325922" title="25Lib">
             <sub-events>
-                <event-block sid="653099222975372">
+                <event-block disabled="1" sid="653099222975372">
                     <conditions>
                         <condition id="0" name="On changed" sid="185199531050595" type="FileChooser" />
                     </conditions>
@@ -44,7 +44,7 @@
                         <action id="16" name="End group" sid="143935218365110" type="Browser" />
                     </actions>
                     <sub-events>
-                        <event-block sid="663059298919189">
+                        <event-block disabled="1" sid="663059298919189">
                             <conditions>
                                 <condition id="-8" name="Compare two values" sid="948883880010688" type="System">
                                     <param id="0" name="First value">left(FileChooser.FileTypeAt(0), 5)</param>
@@ -54,7 +54,7 @@
                             </conditions>
                             <actions />
                             <sub-events>
-                                <event-block sid="441655339884411">
+                                <event-block disabled="1" sid="441655339884411">
                                     <conditions>
                                         <condition id="-8" name="Compare two values" sid="620447635197421" type="System">
                                             <param id="0" name="First value">FileChooser.FileSizeAt(0)</param>
@@ -64,7 +64,7 @@
                                     </conditions>
                                     <actions />
                                     <sub-events>
-                                        <event-block sid="860296159973946">
+                                        <event-block disabled="1" sid="860296159973946">
                                             <conditions>
                                                 <condition id="-8" name="Compare two values" sid="125206426052522" type="System">
                                                     <param id="0" name="First value">FileChooser.FileSizeAt(0)</param>
@@ -82,7 +82,7 @@
                                                 </action>
                                             </actions>
                                         </event-block>
-                                        <event-block sid="155234481675264">
+                                        <event-block disabled="1" sid="155234481675264">
                                             <conditions>
                                                 <condition id="-22" name="Else" sid="938269509715710" type="System" />
                                             </conditions>
@@ -95,7 +95,7 @@
                                         </event-block>
                                     </sub-events>
                                 </event-block>
-                                <event-block sid="198401446545609">
+                                <event-block disabled="1" sid="198401446545609">
                                     <conditions>
                                         <condition id="-22" name="Else" sid="715827366193849" type="System" />
                                     </conditions>
@@ -108,7 +108,7 @@
                                 </event-block>
                             </sub-events>
                         </event-block>
-                        <event-block sid="965073628553915">
+                        <event-block disabled="1" sid="965073628553915">
                             <conditions>
                                 <condition id="-22" name="Else" sid="931437964992392" type="System" />
                             </conditions>
@@ -133,7 +133,7 @@
                             <param id="1" name="Message">&quot;Make screenshot!&quot;</param>
                         </action>
                         <action id="21" name="Paste Layer" sid="975719302344599" type="Canvas">
-                            <param id="0" name="Layer">0</param>
+                            <param id="0" name="Layer">&quot;Current&quot;</param>
                         </action>
                         <action id="-13" name="Set boolean" sid="574541776862081" type="Canvas">
                             <param id="0" name="Instance variable">LoadingScreenshot</param>
@@ -171,7 +171,7 @@
                         </action>
                     </actions>
                 </event-block>
-                <event-block sid="939135057715122">
+                <event-block disabled="1" sid="939135057715122">
                     <conditions>
                         <condition id="0" name="On completed" sid="463063575022506" type="AJAX">
                             <param id="0" name="Tag">&quot;ImageUpload&quot;</param>
@@ -389,13 +389,17 @@
                         <action id="-16" name="Wait" sid="325507709601658" type="System">
                             <param id="0" name="Seconds">0.5</param>
                         </action>
-                        <action id="0" name="Call function" sid="300025114848798" type="Function">
+                        <action disabled="1" id="0" name="Call function" sid="300025114848798" type="Function">
                             <param id="0" name="Name">&quot;Speak_UI&quot;</param>
                             <param id="1" name="Parameter {n}">(Browser.ExecJS(&quot;textresult;&quot;))</param>
                         </action>
                         <action id="14" name="Log" sid="258923030379899" type="Browser">
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;RESULT &quot; &amp; (Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="0" name="Call function" sid="639189765231953" type="Function">
+                            <param id="0" name="Name">&quot;Photo_Result&quot;</param>
+                            <param id="1" name="Parameter {n}">(Browser.ExecJS(&quot;textresult;&quot;))</param>
                         </action>
                         <action id="-10" name="Set value" sid="469265952825496" type="Canvas">
                             <param id="0" name="Instance variable">LastScreen</param>

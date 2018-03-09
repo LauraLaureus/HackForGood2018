@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>Blindagram</name>
+    <name>BlinLes Cam</name>
     <description></description>
     <version>1.0.0.0</version>
     <author></author>
@@ -15,6 +15,7 @@
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Yann Granjon" id="JSON" version="1.200000048">JSON</plugin>
+        <plugin author="Scirra" id="NinePatch" version="1">9-patch</plugin>
         <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
         <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
@@ -27,6 +28,8 @@
     </used-plugins>
     <used-behaviors>
         <behavior author="Scirra" id="Anchor" version="1">Anchor</behavior>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Timer" version="1">Timer</behavior>
     </used-behaviors>
     <used-effects />
     <configurations>
@@ -38,6 +41,7 @@
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
+    <first-layout>lvlSplash</first-layout>
     <use-loader-layout>0</use-loader-layout>
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
@@ -74,6 +78,11 @@
             </object-type>
             <object-type name="UserMedia" sid="964256070077041">
                 <plugin id="UserMedia" />
+                <behaviors>
+                    <behavior-type name="Anchor" sid="531446807629366">
+                        <behavior id="Anchor" />
+                    </behavior-type>
+                </behaviors>
             </object-type>
             <object-type name="Browser" sid="154533692587050">
                 <plugin id="Browser" />
@@ -84,10 +93,78 @@
                     <instance-variable name="LastScreen" sid="355382543332734" type="string" />
                     <instance-variable name="LoadingScreenshot" sid="855649994948385" type="boolean" />
                 </instance-variables>
+                <behaviors>
+                    <behavior-type name="Anchor" sid="370174847136521">
+                        <behavior id="Anchor" />
+                    </behavior-type>
+                </behaviors>
                 <texture />
             </object-type>
             <object-type global="1" name="Dictionary" sid="128702865978452">
                 <plugin id="Dictionary" />
+            </object-type>
+        </object-folder>
+        <object-folder name="UI">
+            <object-type name="logo" sid="234856133828976">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="268119155401988" speed="5">
+                        <frame duration="1" hotspotX="0.504274" hotspotY="0.5" original-source="C:\Users\tatog\Downloads\picture-20180309T151356Z-001\picture\logo.png">
+                            <collision-poly>
+                                <point x="0.0683761" y="0.0125" />
+                                <point x="0.786325" y="0.45" />
+                                <point x="0.991453" y="0.4875" />
+                                <point x="0.786325" y="0.5375" />
+                                <point x="0.5" y="0.95" />
+                                <point x="0.0641026" y="0.9875" />
+                                <point x="0.0042735" y="0.4875" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="TapSnap" sid="614863586579349">
+                <plugin id="NinePatch" />
+                <texture original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\b_opt1.png" />
+            </object-type>
+            <object-type name="TapToShow" sid="307567170304701">
+                <plugin id="NinePatch" />
+                <texture original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\b_opt2.png" />
+            </object-type>
+            <object-type name="sprTxtToShow" sid="240966288276171">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="815313395542062" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.502618" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\texto_1.png">
+                            <collision-poly>
+                                <point x="0.100515" y="0.0104713" />
+                                <point x="0.5" y="0.026178" />
+                                <point x="0.902062" y="0.0052356" />
+                                <point x="0.896907" y="0.989529" />
+                                <point x="0.100515" y="0.994764" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="sprTxtToSnap" sid="244829756039654">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="267587106929814" speed="5">
+                        <frame duration="1" hotspotX="0.501211" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\texto_2.png">
+                            <collision-poly>
+                                <point x="0.00242131" y="0.0134228" />
+                                <point x="0.501211" y="0.416107" />
+                                <point x="0.917676" y="0.127517" />
+                                <point x="0.958838" y="0.5" />
+                                <point x="0.922518" y="0.879195" />
+                                <point x="0.501211" y="0.989933" />
+                                <point x="0.00242131" y="0.986577" />
+                                <point x="0.0290557" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
             </object-type>
         </object-folder>
         <object-type name="ChatWindow" sid="613100327990384">
@@ -115,6 +192,11 @@
         </object-type>
         <object-type name="sysTouchStart" sid="319564715274268">
             <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Timer" sid="984228549094650">
+                    <behavior id="Timer" />
+                </behavior-type>
+            </behaviors>
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="601014184276614" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
@@ -136,19 +218,46 @@
                     <behavior id="Anchor" />
                 </behavior-type>
             </behaviors>
-            <texture original-source="C:\Users\tatog\Downloads\photography\photography\photography_@2X.png" />
+            <texture original-source="C:\Users\tatog\Downloads\pixel_back.png" />
         </object-type>
         <object-type name="lblInit" sid="819395928074151">
             <plugin id="Text" />
+        </object-type>
+        <object-type name="transitionOverlay" sid="594237793527301">
+            <plugin id="TiledBg" />
+            <instance-variables>
+                <instance-variable name="Target" sid="244294291859131" type="string" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Anchor" sid="998044714941868">
+                    <behavior id="Anchor" />
+                </behavior-type>
+                <behavior-type name="Fade" sid="301355329495032">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <texture />
         </object-type>
     </object-folder>
     <families>
         <family name="fmlAnchorStuff" plugin-id="Sprite" sid="942116454520667">
             <members>
+                <member>logo</member>
                 <member>sprHeader</member>
             </members>
             <behaviors>
                 <behavior-type name="Anchor" sid="548594176054810">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+        </family>
+        <family name="fmlANchorPatch" plugin-id="NinePatch" sid="243592606163394">
+            <members>
+                <member>TapSnap</member>
+                <member>TapToShow</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Anchor" sid="502987574888343">
                     <behavior id="Anchor" />
                 </behavior-type>
             </behaviors>
@@ -177,6 +286,7 @@
         <event-sheet>libAccessibility.xml</event-sheet>
         <event-sheet>libPhotoAnalyze.xml</event-sheet>
         <event-sheet>libStrings.xml</event-sheet>
+        <event-sheet>libTransition.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AJAX" uid="0" />

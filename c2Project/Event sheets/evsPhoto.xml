@@ -12,20 +12,42 @@
                 <action id="0" name="Set text" sid="101198776745467" type="lblCurrentScreen">
                     <param id="0" name="Text">&quot;Photo&quot;</param>
                 </action>
+                <action id="0" name="Request camera" sid="469913889640662" type="UserMedia">
+                    <param id="0" name="Source">1</param>
+                    <param id="1" name="Preferred width">0</param>
+                    <param id="2" name="Preferred height">0</param>
+                </action>
+                <action id="-9" name="Set value" sid="264909459850488" type="System">
+                    <param id="0" name="Variable">PhotoStatus</param>
+                    <param id="1" name="Value">0</param>
+                </action>
             </actions>
         </event-block>
+        <variable constant="0" name="PhotoStatus" sid="291671218238266" static="0" type="number">0</variable>
         <event-block sid="612409068222720">
             <conditions>
                 <condition id="0" name="On function" sid="642990532624651" type="Function">
                     <param id="0" name="Name">&quot;Interact_TapTop&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="14" name="Log" sid="877130115333929" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;DO PHOTO&quot;</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="522594392833870">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="513596064969561" type="System">
+                            <param id="0" name="Variable">PhotoStatus</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="829449722177217" type="Function">
+                            <param id="0" name="Name">&quot;Snap_Photo&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="614866046974909">
             <conditions>
@@ -33,12 +55,24 @@
                     <param id="0" name="Name">&quot;Interact_TapBottom&quot;</param>
                 </condition>
             </conditions>
-            <actions>
-                <action id="14" name="Log" sid="585066688898476" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;DO PHOTO&quot;</param>
-                </action>
-            </actions>
+            <actions />
+            <sub-events>
+                <event-block sid="397187024614542">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="160055834963527" type="System">
+                            <param id="0" name="Variable">PhotoStatus</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="739028239430719" type="Function">
+                            <param id="0" name="Name">&quot;Snap_Photo&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
         </event-block>
         <event-block sid="697678012203592">
             <conditions>
@@ -59,10 +93,88 @@
                     <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
                 </condition>
             </conditions>
+            <actions />
+            <sub-events>
+                <event-block sid="149610104899839">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="483359928694129" type="System">
+                            <param id="0" name="Variable">PhotoStatus</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="557609613027717" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Sharing photo!&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="962051879371839">
+            <conditions>
+                <condition id="14" name="On tap" sid="319655668178711" type="Touch" />
+            </conditions>
             <actions>
-                <action id="14" name="Log" sid="948076090020928" type="Browser">
-                    <param id="0" name="Type">2</param>
-                    <param id="1" name="Message">&quot;CHANGE CAMERA?&quot;</param>
+                <action id="0" name="Request camera" sid="618520893993976" type="UserMedia">
+                    <param id="0" name="Source">1</param>
+                    <param id="1" name="Preferred width">0</param>
+                    <param id="2" name="Preferred height">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="874279841195353">
+            <conditions>
+                <condition id="0" name="On function" sid="444831469806576" type="Function">
+                    <param id="0" name="Name">&quot;Snap_Photo&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="172284182015721" type="System">
+                    <param id="0" name="Variable">PhotoStatus</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action id="0" name="Call function" sid="778754685287979" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Snapping photo&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="228103643527614" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="0" name="Call function" sid="387212266448733" type="Function">
+                    <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+                <action id="-16" name="Wait" sid="250186730822850" type="System">
+                    <param id="0" name="Seconds">0.1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="726814692874594" type="Canvas">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="649158188528498" type="UserMedia">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="168828259478363">
+            <conditions>
+                <condition id="0" name="On function" sid="290847628451984" type="Function">
+                    <param id="0" name="Name">&quot;Photo_Result&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="666161612171170" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">Function.Param(0)</param>
+                </action>
+                <action id="-9" name="Set value" sid="199739075318925" type="System">
+                    <param id="0" name="Variable">PhotoStatus</param>
+                    <param id="1" name="Value">2</param>
+                </action>
+                <action id="0" name="Call function" sid="484705227155558" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Swipe right to share photo!&quot;</param>
                 </action>
             </actions>
         </event-block>

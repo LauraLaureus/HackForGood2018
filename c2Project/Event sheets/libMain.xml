@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>libMain</name>
     <events>
+        <include>libTransition</include>
         <include>libStrings</include>
         <include>libPhotoAnalyze</include>
         <include>libAccessibility</include>
@@ -34,53 +35,10 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="509110588046684">
-            <conditions>
-                <condition id="14" name="On tap" sid="863376270267438" type="Touch" />
-            </conditions>
-            <actions>
-                <action id="0" name="Request camera" sid="881582956557869" type="UserMedia">
-                    <param id="0" name="Source">1</param>
-                    <param id="1" name="Preferred width">0</param>
-                    <param id="2" name="Preferred height">0</param>
-                </action>
-                <action id="0" name="Call function" sid="207869216310531" type="Function">
-                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
-                    <param id="1" name="Parameter {n}">&quot;Snapping photo&quot;</param>
-                </action>
-                <action id="-16" name="Wait" sid="484674254620633" type="System">
-                    <param id="0" name="Seconds">1.0</param>
-                </action>
-                <action id="0" name="Call function" sid="170398570797532" type="Function">
-                    <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
-                    <param id="1" name="Parameter {n}"></param>
-                </action>
-            </actions>
-        </event-block>
-        <event-group description="" sid="983063864519179" title="TransitionLib">
-            <sub-events>
-                <event-block sid="856297474303962">
-                    <conditions>
-                        <condition id="0" name="On function" sid="546545791625102" type="Function">
-                            <param id="0" name="Name">&quot;GoToLvl&quot;</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="-25" name="Go to layout (by name)" sid="485194254402772" type="System">
-                            <param id="0" name="Layout">Function.Param(0)</param>
-                        </action>
-                    </actions>
-                </event-block>
-            </sub-events>
-        </event-group>
         <event-group description="" sid="866097904280526" title="TouchLib">
             <sub-events>
                 <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>
                 <variable constant="0" name="max_deltaX" sid="278580273302000" static="1" type="number">200</variable>
-                <event-block sid="300581366257919">
-                    <conditions />
-                    <actions />
-                </event-block>
                 <event-block sid="206247513599680">
                     <conditions>
                         <condition id="10" name="On Nth touch start" sid="778379346986029" type="Touch">
@@ -130,7 +88,11 @@
                                             <param id="2" name="Second value">max_deltaX</param>
                                         </condition>
                                     </conditions>
-                                    <actions />
+                                    <actions>
+                                        <action behavior="Timer" id="1" name="Stop timer" sid="289950929181714" type="sysTouchStart">
+                                            <param id="0" name="Tag">&quot;idle&quot;</param>
+                                        </action>
+                                    </actions>
                                     <sub-events>
                                         <event-block sid="550548602409168">
                                             <conditions>

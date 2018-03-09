@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>evsSplash</name>
     <events>
+        <include>libTransition</include>
         <include>libAccessibility</include>
         <include>libStrings</include>
         <include>Updater</include>
@@ -14,38 +15,140 @@
                 <action id="0" name="Set text" sid="777406795089076" type="lblCurrentScreen">
                     <param id="0" name="Text">&quot;Splash&quot;</param>
                 </action>
-            </actions>
-        </event-block>
-        <event-block sid="506883849057056">
-            <conditions>
-                <condition id="-7" name="Compare time" sid="172451985666532" type="System">
-                    <param id="0" name="Comparison">0</param>
-                    <param id="1" name="Time (seconds)">2</param>
-                </condition>
-            </conditions>
-            <actions>
-                <action id="-2" name="Go to layout" sid="968339591366552" type="System">
-                    <param id="0" name="Layout">lvlMain</param>
+                <action id="-4" name="Set layer visible" sid="441499067850370" type="System">
+                    <param id="0" name="Layer">&quot;Header&quot;</param>
+                    <param id="1" name="Visibility">0</param>
                 </action>
             </actions>
         </event-block>
         <event-group description="" sid="685482422440827" title="Init">
             <sub-events>
+                <event-block disabled="1" sid="506883849057056">
+                    <conditions>
+                        <condition id="-7" name="Compare time" sid="172451985666532" type="System">
+                            <param id="0" name="Comparison">0</param>
+                            <param id="1" name="Time (seconds)">3</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="550929727127007" type="Function">
+                            <param id="0" name="Name">&quot;Init&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="864832757961781">
                     <conditions>
                         <condition id="0" name="On any touch start" sid="830536420200961" type="Touch" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="118047064080682" type="Function">
+                            <param id="0" name="Name">&quot;Init&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="239978053633952">
+                    <conditions>
+                        <condition id="0" name="On function" sid="229410308469135" type="Function">
+                            <param id="0" name="Name">&quot;Init&quot;</param>
+                        </condition>
                     </conditions>
                     <actions />
                     <sub-events>
                         <event-block sid="453234100297695">
                             <conditions>
-                                <condition id="1" inverted="1" name="Is online" sid="769515728219245" type="Browser" />
+                                <condition id="1" name="Is online" sid="769515728219245" type="Browser" />
                             </conditions>
                             <actions>
-                                <action id="0" name="Request camera" sid="553468029814927" type="UserMedia">
-                                    <param id="0" name="Source">0</param>
-                                    <param id="1" name="Preferred width">0</param>
-                                    <param id="2" name="Preferred height">0</param>
+                                <action id="14" name="Log" sid="247464824411255" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;Online OK&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="266479551139373">
+                                    <conditions>
+                                        <condition id="2" name="Supports user media" sid="755314846963975" type="UserMedia" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="14" name="Log" sid="155483933560837" type="Browser">
+                                            <param id="0" name="Type">0</param>
+                                            <param id="1" name="Message">&quot;userMedia OK&quot;</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="622918163661808">
+                                            <conditions>
+                                                <condition id="10" name="Supports speech synthesis" sid="667956194138613" type="UserMedia" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="14" name="Log" sid="861375718522249" type="Browser">
+                                                    <param id="0" name="Type">0</param>
+                                                    <param id="1" name="Message">&quot;Speech OK&quot;</param>
+                                                </action>
+                                                <action id="0" name="Request camera" sid="553468029814927" type="UserMedia">
+                                                    <param id="0" name="Source">0</param>
+                                                    <param id="1" name="Preferred width">0</param>
+                                                    <param id="2" name="Preferred height">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="287013374147650">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="863477731215264" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="14" name="Log" sid="866334061750471" type="Browser">
+                                                    <param id="0" name="Type">0</param>
+                                                    <param id="1" name="Message">&quot;Don&apos;t support text to speech&quot;</param>
+                                                </action>
+                                                <action id="0" name="Alert" sid="543507470607647" type="Browser">
+                                                    <param id="0" name="Message">&quot;Your browser doesn&apos;t support text to speech, please update browser!&quot;</param>
+                                                </action>
+                                                <action id="1" name="Close" sid="519516676885616" type="Browser" />
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="197542143560478">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="502334282106231" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="14" name="Log" sid="878331393532553" type="Browser">
+                                            <param id="0" name="Type">0</param>
+                                            <param id="1" name="Message">&quot;Don&apos;t support user media&quot;</param>
+                                        </action>
+                                        <action id="0" name="Alert" sid="307958045432299" type="Browser">
+                                            <param id="0" name="Message">&quot;Your browser doesn&apos;t support user media, please update browser!&quot;</param>
+                                        </action>
+                                        <action id="1" name="Close" sid="589366471645048" type="Browser" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="447646430764545">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="630337306575549" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="14" name="Log" sid="266690146474787" type="Browser">
+                                    <param id="0" name="Type">0</param>
+                                    <param id="1" name="Message">&quot;You are offline&quot;</param>
+                                </action>
+                                <action id="0" name="Alert" sid="811792947976192" type="Browser">
+                                    <param id="0" name="Message">&quot;You are offline, you can&apos;t use this app offline! Please check connection.&quot;</param>
+                                </action>
+                                <action id="1" name="Close" sid="825937772265952" type="Browser" />
+                            </actions>
+                        </event-block>
+                        <event-block sid="441529441766949">
+                            <conditions />
+                            <actions>
+                                <action id="-12" name="Set group active" sid="700438181927003" type="System">
+                                    <param id="0" name="Group name">&quot;Init&quot;</param>
+                                    <param id="1" name="State">0</param>
                                 </action>
                             </actions>
                         </event-block>
@@ -53,41 +156,46 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-block sid="246727041965863">
-            <conditions>
-                <condition id="1" name="Is online" sid="761838491678852" type="Browser" />
-            </conditions>
-            <actions />
-        </event-block>
         <event-block sid="618455750043781">
             <conditions>
                 <condition id="0" name="On media request approved" sid="761851321490110" type="UserMedia" />
             </conditions>
-            <actions />
+            <actions>
+                <action id="14" name="Log" sid="861413510138898" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;Accepted&quot;</param>
+                </action>
+                <action id="0" name="Call function" sid="181454720219496" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">Dictionary.Get(&quot;Welcome&quot;)</param>
+                </action>
+                <action id="-16" name="Wait" sid="650844251691450" type="System">
+                    <param id="0" name="Seconds">0.5</param>
+                </action>
+                <action id="0" name="Call function" sid="561196961022546" type="Function">
+                    <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;lvlMain&quot;</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="523716176156807" type="System">
+                    <param id="0" name="Layer">&quot;Header&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+            </actions>
         </event-block>
         <event-block sid="948992760975319">
             <conditions>
                 <condition id="1" name="On media request declined" sid="293256591325781" type="UserMedia" />
             </conditions>
-            <actions />
-        </event-block>
-        <event-block sid="622918163661808">
-            <conditions>
-                <condition id="10" name="Supports speech synthesis" sid="667956194138613" type="UserMedia" />
-            </conditions>
-            <actions />
-        </event-block>
-        <event-block sid="266479551139373">
-            <conditions>
-                <condition id="2" name="Supports user media" sid="755314846963975" type="UserMedia" />
-            </conditions>
-            <actions />
-        </event-block>
-        <event-block sid="329556506830467">
-            <conditions>
-                <condition id="14" name="On tap" sid="181639103402068" type="Touch" />
-            </conditions>
-            <actions />
+            <actions>
+                <action id="14" name="Log" sid="879966051549466" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;Refused&quot;</param>
+                </action>
+                <action id="0" name="Alert" sid="660736840920522" type="Browser">
+                    <param id="0" name="Message">&quot;Please give permission to use your camera... without camera permission I can&apos;t do photo!&quot;</param>
+                </action>
+                <action id="9" name="Reload" sid="893632225949726" type="Browser" />
+            </actions>
         </event-block>
     </events>
 </c2eventsheet>

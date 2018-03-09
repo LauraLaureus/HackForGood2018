@@ -12,6 +12,17 @@
                 <action id="0" name="Set text" sid="933561456025746" type="lblCurrentScreen">
                     <param id="0" name="Text">&quot;Main&quot;</param>
                 </action>
+                <action disabled="1" id="0" name="Call function" sid="248253423558002" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">Dictionary.Get(&quot;lvlMain_base&quot;)</param>
+                </action>
+                <action disabled="1" id="-16" name="Wait" sid="817605273294729" type="System">
+                    <param id="0" name="Seconds">3</param>
+                </action>
+                <action disabled="1" id="0" name="Call function" sid="921753480430145" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">Dictionary.Get(&quot;lvlMain_help&quot;)</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="863789825572559">
