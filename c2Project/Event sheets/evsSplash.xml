@@ -3,6 +3,8 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>evsSplash</name>
     <events>
+        <include>libAccessibility</include>
+        <include>libStrings</include>
         <include>Updater</include>
         <event-block sid="868762897437322">
             <conditions>
@@ -26,6 +28,66 @@
                     <param id="0" name="Layout">lvlMain</param>
                 </action>
             </actions>
+        </event-block>
+        <event-group description="" sid="685482422440827" title="Init">
+            <sub-events>
+                <event-block sid="864832757961781">
+                    <conditions>
+                        <condition id="0" name="On any touch start" sid="830536420200961" type="Touch" />
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="453234100297695">
+                            <conditions>
+                                <condition id="1" inverted="1" name="Is online" sid="769515728219245" type="Browser" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Request camera" sid="553468029814927" type="UserMedia">
+                                    <param id="0" name="Source">0</param>
+                                    <param id="1" name="Preferred width">0</param>
+                                    <param id="2" name="Preferred height">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="246727041965863">
+            <conditions>
+                <condition id="1" name="Is online" sid="761838491678852" type="Browser" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="618455750043781">
+            <conditions>
+                <condition id="0" name="On media request approved" sid="761851321490110" type="UserMedia" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="948992760975319">
+            <conditions>
+                <condition id="1" name="On media request declined" sid="293256591325781" type="UserMedia" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="622918163661808">
+            <conditions>
+                <condition id="10" name="Supports speech synthesis" sid="667956194138613" type="UserMedia" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="266479551139373">
+            <conditions>
+                <condition id="2" name="Supports user media" sid="755314846963975" type="UserMedia" />
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="329556506830467">
+            <conditions>
+                <condition id="14" name="On tap" sid="181639103402068" type="Touch" />
+            </conditions>
+            <actions />
         </event-block>
     </events>
 </c2eventsheet>

@@ -9,7 +9,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Alert" sid="430803245700003" type="Browser">
-                    <param id="0" name="Message">&quot;Aggiornamento disponibile, ricaricare la pagina o attendere che il gioco ricarichi automaticamente appena terminato l&apos;aggiornamento&quot;</param>
+                    <param id="0" name="Message">&quot;Update avaiable, the app will be reloaded soon...&quot;</param>
                 </action>
             </actions>
         </event-block>

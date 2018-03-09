@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>libStrings</name>
+    <events>
+        <event-block sid="217525143334758">
+            <conditions>
+                <condition id="0" name="On function" sid="489918306296347" type="Function">
+                    <param id="0" name="Name">&quot;GetText&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="823207284923294">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="719400354953166" type="System" />
+                <condition id="4" name="Is empty" sid="586446634080679" type="Dictionary" />
+            </conditions>
+            <actions>
+                <action id="1" name="Request project file" sid="797244846173616" type="AJAX">
+                    <param id="0" name="Tag">&quot;strings&quot;</param>
+                    <param id="1" name="File">strings.json</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="975042083997242">
+            <conditions>
+                <condition id="0" name="On completed" sid="807092999909131" type="AJAX">
+                    <param id="0" name="Tag">&quot;strings&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Load" sid="279502876694481" type="Dictionary">
+                    <param id="0" name="JSON">AJAx.LastData</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

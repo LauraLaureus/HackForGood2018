@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>libMain</name>
     <events>
+        <include>libStrings</include>
         <include>libPhotoAnalyze</include>
         <include>libAccessibility</include>
         <include>Updater</include>
@@ -104,7 +105,7 @@
                             <param id="0" name="X">Touch.XAt(0)</param>
                             <param id="1" name="Y">Touch.YAt(0)</param>
                         </action>
-                        <action id="14" name="Log" sid="118980758973684" type="Browser">
+                        <action disabled="1" id="14" name="Log" sid="118980758973684" type="Browser">
                             <param id="0" name="Type">0</param>
                             <param id="1" name="Message">&quot;Touch deltaX &quot; &amp; abs(sysTouchStart.X - sysTouchEnd.X) &amp; &quot; deltaY &quot; &amp; abs(sysTouchStart.y- sysTouchEnd.Y)</param>
                         </action>
