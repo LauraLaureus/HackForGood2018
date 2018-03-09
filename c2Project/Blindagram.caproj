@@ -134,11 +134,24 @@
         </family>
     </families>
     <layout-folder>
-        <layout>lvlCommon.xml</layout>
+        <layout-folder name="Global">
+            <layout>lvlCommon.xml</layout>
+        </layout-folder>
+        <layout>lvlSplash.xml</layout>
+        <layout>lvlMain.xml</layout>
+        <layout>lvlFeed.xml</layout>
+        <layout>lvlComments.xml</layout>
         <layout>lvlPhoto.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>evsMain.xml</event-sheet>
+        <event-folder name="SpecificScreens">
+            <event-sheet>evsSplash.xml</event-sheet>
+            <event-sheet>evsMainScreen.xml</event-sheet>
+            <event-sheet>evsFeed.xml</event-sheet>
+            <event-sheet>evsComments.xml</event-sheet>
+            <event-sheet>evsPhoto.xml</event-sheet>
+        </event-folder>
+        <event-sheet>libMain.xml</event-sheet>
         <event-sheet>Updater.xml</event-sheet>
         <event-sheet>libAccessibility.xml</event-sheet>
         <event-sheet>libPhotoAnalyze.xml</event-sheet>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2eventsheet>
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
-    <name>evsMain</name>
+    <name>libMain</name>
     <events>
         <include>libPhotoAnalyze</include>
         <include>libAccessibility</include>
@@ -56,6 +56,22 @@
                 </action>
             </actions>
         </event-block>
+        <event-group description="" sid="983063864519179" title="TransitionLib">
+            <sub-events>
+                <event-block sid="856297474303962">
+                    <conditions>
+                        <condition id="0" name="On function" sid="546545791625102" type="Function">
+                            <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-25" name="Go to layout (by name)" sid="485194254402772" type="System">
+                            <param id="0" name="Layout">Function.Param(0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
         <event-group description="" sid="866097904280526" title="TouchLib">
             <sub-events>
                 <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>

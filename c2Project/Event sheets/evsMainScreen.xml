@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>evsMainScreen</name>
+    <events>
+        <include>libMain</include>
+        <event-block sid="190091105720189">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="156279634510537" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="933561456025746" type="lblCurrentScreen">
+                    <param id="0" name="Text">&quot;Main&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="863789825572559">
+            <conditions>
+                <condition id="0" name="On function" sid="890932207351234" type="Function">
+                    <param id="0" name="Name">&quot;Interact_TapTop&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="419057285503401" type="Function">
+                    <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;lvlPhoto&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="808086639565550">
+            <conditions>
+                <condition id="0" name="On function" sid="443606058615639" type="Function">
+                    <param id="0" name="Name">&quot;Interact_TapBottom&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="257031661750749" type="Function">
+                    <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;lvlFeed&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="164389571819898">
+            <conditions>
+                <condition id="0" name="On function" sid="377434343663171" type="Function">
+                    <param id="0" name="Name">&quot;Interact_SwipeLeft&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="400395337021969">
+            <conditions>
+                <condition id="0" name="On function" sid="363849839992652" type="Function">
+                    <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+    </events>
+</c2eventsheet>

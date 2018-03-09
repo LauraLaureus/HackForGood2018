@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>evsSplash</name>
+    <events>
+        <include>Updater</include>
+        <event-block sid="868762897437322">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="232878678763400" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="777406795089076" type="lblCurrentScreen">
+                    <param id="0" name="Text">&quot;Splash&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="506883849057056">
+            <conditions>
+                <condition id="-7" name="Compare time" sid="172451985666532" type="System">
+                    <param id="0" name="Comparison">0</param>
+                    <param id="1" name="Time (seconds)">2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-2" name="Go to layout" sid="968339591366552" type="System">
+                    <param id="0" name="Layout">lvlMain</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

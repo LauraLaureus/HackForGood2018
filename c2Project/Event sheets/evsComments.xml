@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>evsComments</name>
+    <events>
+        <include>libMain</include>
+        <event-block sid="630143165744264">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="931219437778165" type="System" />
+            </conditions>
+            <actions>
+                <action id="0" name="Set text" sid="253785682631541" type="lblCurrentScreen">
+                    <param id="0" name="Text">&quot;Comments&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="438395418684123">
+            <conditions>
+                <condition id="0" name="On function" sid="549950009775016" type="Function">
+                    <param id="0" name="Name">&quot;Interact_TapTop&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="208677361692655" type="Browser">
+                    <param id="0" name="Type">2</param>
+                    <param id="1" name="Message">&quot;Prev comment&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="192641602105798">
+            <conditions>
+                <condition id="0" name="On function" sid="220939094785488" type="Function">
+                    <param id="0" name="Name">&quot;Interact_TapBottom&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="14" name="Log" sid="452222915547200" type="Browser">
+                    <param id="0" name="Type">2</param>
+                    <param id="1" name="Message">&quot;Next photo&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="736861835084428">
+            <conditions>
+                <condition id="0" name="On function" sid="453107489566626" type="Function">
+                    <param id="0" name="Name">&quot;Interact_SwipeLeft&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="0" name="Call function" sid="568326660054420" type="Function">
+                    <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;lvlFeed&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="679402432370935">
+            <conditions>
+                <condition id="0" name="On function" sid="995193631788224" type="Function">
+                    <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+    </events>
+</c2eventsheet>
