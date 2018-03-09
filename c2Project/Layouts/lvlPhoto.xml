@@ -493,6 +493,11 @@
                 <scriptfile>upload.js</scriptfile>
             </properties>
         </instance>
+        <instance type="CallJSShare" uid="34">
+            <properties>
+                <scriptfile>share.js</scriptfile>
+            </properties>
+        </instance>
     </nonworld-instances>
     <effects />
 </c2layout>

@@ -107,6 +107,9 @@
             <object-type name="Audio" sid="681567462025404">
                 <plugin id="Audio" />
             </object-type>
+            <object-type global="1" name="CallJSShare" sid="844836722881014">
+                <plugin id="cjs" />
+            </object-type>
         </object-folder>
         <object-folder name="UI">
             <object-type name="logo" sid="234856133828976">
@@ -382,5 +385,6 @@
         </file-folder>
         <file name="upload.js" />
         <file name="strings.json" />
+        <file name="share.js" />
     </files-folder>
 </c2project>
