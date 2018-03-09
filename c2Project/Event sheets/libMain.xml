@@ -35,7 +35,6 @@
                 </event-block>
             </sub-events>
         </event-group>
-        <event-group description="" sid="584162873361246" title="Style" />
         <event-group description="" sid="866097904280526" title="TouchLib">
             <sub-events>
                 <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>
@@ -107,6 +106,12 @@
                                                     <param id="0" name="Name">&quot;Interact_TapTop&quot;</param>
                                                     <param id="1" name="Parameter {n}"></param>
                                                 </action>
+                                                <action id="0" name="Play" sid="255373321420288" type="Audio">
+                                                    <param id="0" name="Audio file">toc on top</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                                </action>
                                             </actions>
                                         </event-block>
                                         <event-block sid="211899473850554">
@@ -117,6 +122,12 @@
                                                 <action id="0" name="Call function" sid="225381488503842" type="Function">
                                                     <param id="0" name="Name">&quot;Interact_TapBottom&quot;</param>
                                                     <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                                <action id="0" name="Play" sid="794686139943192" type="Audio">
+                                                    <param id="0" name="Audio file">top on bottom</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
                                                 </action>
                                             </actions>
                                         </event-block>
@@ -143,6 +154,12 @@
                                                     <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
                                                     <param id="1" name="Parameter {n}"></param>
                                                 </action>
+                                                <action id="0" name="Play" sid="498714460062290" type="Audio">
+                                                    <param id="0" name="Audio file">swipe scrape</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                                                </action>
                                             </actions>
                                         </event-block>
                                         <comment>Left</comment>
@@ -154,6 +171,12 @@
                                                 <action id="0" name="Call function" sid="600861744617779" type="Function">
                                                     <param id="0" name="Name">&quot;Interact_SwipeLeft&quot;</param>
                                                     <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                                <action id="0" name="Play" sid="808556245307900" type="Audio">
+                                                    <param id="0" name="Audio file">swipe scrape</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
                                                 </action>
                                             </actions>
                                         </event-block>

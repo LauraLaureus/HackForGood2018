@@ -11,6 +11,7 @@
     <saved-with-version>25500</saved-with-version>
     <used-plugins>
         <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Dictionary" version="1">Dictionary</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
@@ -167,20 +168,46 @@
                 </animation-folder>
             </object-type>
         </object-folder>
+        <object-folder name="SysStuff">
+            <object-type name="sysTouchEnd" sid="155690389717264">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="608943552679489" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="sysTouchStart" sid="319564715274268">
+                <plugin id="Sprite" />
+                <behaviors>
+                    <behavior-type name="Timer" sid="984228549094650">
+                        <behavior id="Timer" />
+                    </behavior-type>
+                </behaviors>
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="601014184276614" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                    </animation>
+                </animation-folder>
+            </object-type>
+            <object-type name="transitionOverlay" sid="594237793527301">
+                <plugin id="TiledBg" />
+                <instance-variables>
+                    <instance-variable name="Target" sid="244294291859131" type="string" />
+                </instance-variables>
+                <behaviors>
+                    <behavior-type name="Anchor" sid="998044714941868">
+                        <behavior id="Anchor" />
+                    </behavior-type>
+                    <behavior-type name="Fade" sid="301355329495032">
+                        <behavior id="Fade" />
+                    </behavior-type>
+                </behaviors>
+                <texture />
+            </object-type>
+        </object-folder>
         <object-type name="ChatWindow" sid="613100327990384">
             <plugin id="TextBox" />
-        </object-type>
-        <object-type name="TiledBackground" sid="732384626661129">
-            <plugin id="TiledBg" />
-            <texture />
-        </object-type>
-        <object-type name="sprHeader" sid="154544906401329">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="334149950648456" speed="5">
-                    <frame duration="1" hotspotX="0" hotspotY="0" />
-                </animation>
-            </animation-folder>
         </object-type>
         <object-type name="lblCurrentScreen" sid="672352382127215">
             <plugin id="Text" />
@@ -189,27 +216,6 @@
                     <behavior id="Anchor" />
                 </behavior-type>
             </behaviors>
-        </object-type>
-        <object-type name="sysTouchStart" sid="319564715274268">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Timer" sid="984228549094650">
-                    <behavior id="Timer" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="601014184276614" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
-        </object-type>
-        <object-type name="sysTouchEnd" sid="155690389717264">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="608943552679489" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
-                </animation>
-            </animation-folder>
         </object-type>
         <object-type name="bgBackground" sid="597189208987398">
             <plugin id="TiledBg" />
@@ -223,35 +229,22 @@
         <object-type name="lblInit" sid="819395928074151">
             <plugin id="Text" />
         </object-type>
-        <object-type name="transitionOverlay" sid="594237793527301">
-            <plugin id="TiledBg" />
-            <instance-variables>
-                <instance-variable name="Target" sid="244294291859131" type="string" />
-            </instance-variables>
-            <behaviors>
-                <behavior-type name="Anchor" sid="998044714941868">
-                    <behavior id="Anchor" />
-                </behavior-type>
-                <behavior-type name="Fade" sid="301355329495032">
-                    <behavior id="Fade" />
-                </behavior-type>
-            </behaviors>
-            <texture />
-        </object-type>
         <object-type name="photo_screenshot" sid="597507624279836">
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="908760541462557" speed="5">
-                    <frame duration="1" hotspotX="0.50193" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\screenshots\photo_screenshot.PNG" />
+                    <frame duration="1" hotspotX="0" hotspotY="0" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\screenshots\photo_screenshot_1.png" />
                 </animation>
             </animation-folder>
+        </object-type>
+        <object-type name="Audio" sid="681567462025404">
+            <plugin id="Audio" />
         </object-type>
     </object-folder>
     <families>
         <family name="fmlAnchorStuff" plugin-id="Sprite" sid="942116454520667">
             <members>
                 <member>logo</member>
-                <member>sprHeader</member>
             </members>
             <behaviors>
                 <behavior-type name="Anchor" sid="548594176054810">
@@ -311,8 +304,31 @@
             </properties>
         </global-instance>
         <global-instance type="Browser" uid="5" />
+        <global-instance type="Audio" uid="11">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
     </global-instances>
-    <sounds-folder />
+    <sounds-folder>
+        <file name="shutter camera.m4a" />
+        <file name="shutter camera.ogg" />
+        <file name="swipe scrape.m4a" />
+        <file name="swipe scrape.ogg" />
+        <file name="toc on top.m4a" />
+        <file name="toc on top.ogg" />
+        <file name="top on bottom.m4a" />
+        <file name="top on bottom.ogg" />
+    </sounds-folder>
     <music-folder />
     <files-folder>
         <file-folder name="Icons">

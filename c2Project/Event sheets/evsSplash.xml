@@ -21,17 +21,17 @@
                 </action>
                 <action id="5" name="Set web font" sid="939963458239113" type="lblStuff">
                     <param id="0" name="Family name">&quot;Montserrat&apos;, sans-serif&quot;</param>
-                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Montserrat:700&quot;</param>
+                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Montserrat:900&quot;</param>
                 </action>
             </actions>
         </event-block>
         <event-group description="" sid="685482422440827" title="Init">
             <sub-events>
-                <event-block disabled="1" sid="506883849057056">
+                <event-block sid="506883849057056">
                     <conditions>
                         <condition id="-7" name="Compare time" sid="172451985666532" type="System">
                             <param id="0" name="Comparison">0</param>
-                            <param id="1" name="Time (seconds)">3</param>
+                            <param id="1" name="Time (seconds)">5</param>
                         </condition>
                     </conditions>
                     <actions>

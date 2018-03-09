@@ -147,6 +147,12 @@
                 <action id="-16" name="Wait" sid="228103643527614" type="System">
                     <param id="0" name="Seconds">0.1</param>
                 </action>
+                <action id="0" name="Play" sid="685732029234470" type="Audio">
+                    <param id="0" name="Audio file">shutter camera</param>
+                    <param id="2" name="Loop">0</param>
+                    <param id="3" name="Volume">0</param>
+                    <param id="1" name="Tag (optional)">&quot;sfx&quot;</param>
+                </action>
                 <action id="0" name="Call function" sid="387212266448733" type="Function">
                     <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
                     <param id="1" name="Parameter {n}"></param>
@@ -169,6 +175,9 @@
                 </condition>
             </conditions>
             <actions>
+                <action id="0" name="Set text" sid="718721316866640" type="lblInit">
+                    <param id="0" name="Text">Function.Param(0)</param>
+                </action>
                 <action id="0" name="Call function" sid="666161612171170" type="Function">
                     <param id="0" name="Name">&quot;Speak_UI&quot;</param>
                     <param id="1" name="Parameter {n}">Function.Param(0)</param>
@@ -180,6 +189,12 @@
                 <action id="0" name="Call function" sid="484705227155558" type="Function">
                     <param id="0" name="Name">&quot;Speak_UI&quot;</param>
                     <param id="1" name="Parameter {n}">&quot;Swipe right to share photo!&quot;</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="341647542142575" type="Canvas">
+                    <param id="0" name="Opacity">40</param>
+                </action>
+                <action id="-15" name="Set visible" sid="841393297376802" type="lblInit">
+                    <param id="0" name="Visibility">1</param>
                 </action>
             </actions>
         </event-block>
