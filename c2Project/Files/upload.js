@@ -273,9 +273,7 @@ adultContent = function(adult)
 		{
 			// Build parameter string.
 			var paramString = "?subscriptionKey=" + 
-				encodeURIComponent(document.getElementById("subscriptionKeyInput").value) +
-				"&subscriptionRegion=" + 
-				encodeURIComponent(document.getElementById("subscriptionRegionSelect").value);
+				encodeURIComponent(document.getElementById("subscriptionKeyInput").value) + "&subscriptionRegion=" + encodeURIComponent(document.getElementById("subscriptionRegionSelect").value);
 			
 			// Update navagation links with new parameters.
 			for (var i = 0; i < navigationArray.length; ++i)
@@ -385,5 +383,7 @@ adultContent = function(adult)
 	
 	// Initialize the JavaScript code.
 	
-	window.onload = common.init;
-	
+	//window.onload = common.init;
+	jQuery( document ).ready(function() {
+		common.init;
+	});
