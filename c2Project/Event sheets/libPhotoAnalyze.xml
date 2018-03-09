@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>libPhotoAnalyze</name>
+    <events>
+        <event-block sid="922402731391240">
+            <conditions>
+                <condition id="0" name="On function" sid="930984012021996" type="Function">
+                    <param id="0" name="Name">&quot;SnapPhoto&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="17" name="Execute Javascript" sid="501129261768917" type="Browser">
+                    <param id="0" name="Javascript">&quot;document.getElementById(&apos;imageuploader&apos;).click();&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="114182681325922" title="25Lib">
+            <sub-events>
+                <event-block sid="653099222975372">
+                    <conditions>
+                        <condition id="0" name="On changed" sid="185199531050595" type="FileChooser" />
+                    </conditions>
+                    <actions>
+                        <action id="15" name="Start group" sid="759261782081139" type="Browser">
+                            <param id="0" name="Group name">&quot;File upload&quot;</param>
+                        </action>
+                        <action id="14" name="Log" sid="703106943226850" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Name : &quot;&amp; FileChooser.FileNameAt(0)</param>
+                        </action>
+                        <action id="14" name="Log" sid="696071758780680" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Size : &quot;&amp; FileChooser.FileSizeAt(0)</param>
+                        </action>
+                        <action id="14" name="Log" sid="443225181384348" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;FileType : &quot;&amp; FileChooser.FileTypeAt(0)</param>
+                        </action>
+                        <action id="14" name="Log" sid="951277525332467" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;url : &quot;&amp; FileChooser.FileURLAt(0)</param>
+                        </action>
+                        <action id="16" name="End group" sid="143935218365110" type="Browser" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="663059298919189">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="948883880010688" type="System">
+                                    <param id="0" name="First value">left(FileChooser.FileTypeAt(0), 5)</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Second value">&quot;image&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="441655339884411">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="620447635197421" type="System">
+                                            <param id="0" name="First value">FileChooser.FileSizeAt(0)</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Second value">UPLOAD_MIN</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="860296159973946">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="125206426052522" type="System">
+                                                    <param id="0" name="First value">FileChooser.FileSizeAt(0)</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">UPLOAD_MAX</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="274662931790623" type="System">
+                                                    <param id="0" name="Variable">Upload_BLOB</param>
+                                                    <param id="1" name="Value">FileChooser.FileURLAt(0)</param>
+                                                </action>
+                                                <action id="0" name="Set visible" sid="936092307803600" type="FileChooser">
+                                                    <param id="0" name="Visibility">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="155234481675264">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="938269509715710" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="147140078300767" type="Function">
+                                                    <param id="0" name="Name">&quot;ShowError&quot;</param>
+                                                    <param id="1" name="Parameter {n}">&quot;Your image is too big, please provide a smaller image!&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <event-block sid="198401446545609">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="715827366193849" type="System" />
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Call function" sid="926765021043806" type="Function">
+                                            <param id="0" name="Name">&quot;ShowError&quot;</param>
+                                            <param id="1" name="Parameter {n}">&quot;Your image is too small, please provide a bigger image&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="965073628553915">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="931437964992392" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="601250071189719" type="Function">
+                                    <param id="0" name="Name">&quot;ShowError&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;Please provide a valid image&quot; </param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="246209643972052">
+                    <conditions>
+                        <condition id="0" name="On function" sid="935078076037324" type="Function">
+                            <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="795979938842441" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Make screenshot!&quot;</param>
+                        </action>
+                        <action id="21" name="Paste Layer" sid="975719302344599" type="Canvas">
+                            <param id="0" name="Layer">0</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="574541776862081" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="634232870590902" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">Self.imageUrl</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="602744732276965">
+                    <conditions>
+                        <condition id="-8" name="Is boolean instance variable set" sid="713288190335712" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                        </condition>
+                        <condition id="-8" name="Compare two values" sid="433725198246243" type="System">
+                            <param id="0" name="First value">len(Canvas.LastScreen)</param>
+                            <param id="1" name="Comparison">4</param>
+                            <param id="2" name="Second value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="141318307755569" type="Function">
+                            <param id="0" name="Name">&quot;Pic_UploadPreview&quot;</param>
+                            <param id="1" name="Parameter {n}">Canvas.LastScreen</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="719574878069492" type="Canvas">
+                            <param id="0" name="Instance variable">LoadingScreenshot</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                        <action disabled="1" id="-10" name="Set value" sid="205508649806754" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="939135057715122">
+                    <conditions>
+                        <condition id="0" name="On completed" sid="463063575022506" type="AJAX">
+                            <param id="0" name="Tag">&quot;ImageUpload&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="14" name="Log" sid="840039208166333" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Image uploaded! &quot; &amp; AJAX.LastData</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="374779822546424" type="System">
+                            <param id="0" name="Seconds">1.0</param>
+                        </action>
+                        <action id="0" name="Call function" sid="886468282896178" type="Function">
+                            <param id="0" name="Name">&quot;UnBlockUI&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="0" name="Call function" sid="317764299501397" type="Function">
+                            <param id="0" name="Name">&quot;PreviewUploaded&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="468319617966430">
+                    <conditions>
+                        <condition id="0" name="On function" sid="554924205365794" type="Function">
+                            <param id="0" name="Name">&quot;Pic_UploadPreview&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action disabled="1" id="2" name="Post to URL" sid="615698088747451" type="AJAX">
+                            <param id="0" name="Tag">&quot;ImageUpload&quot;</param>
+                            <param id="1" name="URL">CCON_BASEURL &amp; CANVASUPLOAD_URL</param>
+                            <param id="2" name="Data">&quot;&quot;</param>
+                            <param id="3" name="Method">&quot;POST&quot;</param>
+                        </action>
+                        <action id="0" name="Execute" sid="632460171763701" type="CallJS">
+                            <param id="0" name="Value">&quot;processPhoto(&apos;&quot;&amp;Canvas.LastScreen&amp;&quot;&apos;,&apos;&quot;&amp;CustomName&amp;&quot;_big.jpg&apos;);&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="959241316608130" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="146247058154380" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="0" name="Call function" sid="873318957274417" type="Function">
+                            <param id="0" name="Name">&quot;PreviewUploaded&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="445073342831492">
+                    <conditions>
+                        <condition id="0" name="On function" sid="461910390907467" type="Function">
+                            <param id="0" name="Name">&quot;Pic_UploadImage&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+                <event-block sid="779442195881550">
+                    <conditions>
+                        <condition id="1" name="On error" sid="229028815325463" type="AJAX">
+                            <param id="0" name="Tag">&quot;ImageUpload&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="673405120949385" type="Function">
+                            <param id="0" name="Name">&quot;ShowError&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Image upload failed, please reload the page&quot; </param>
+                        </action>
+                        <action id="14" name="Log" sid="694318379537859" type="Browser">
+                            <param id="0" name="Type">2</param>
+                            <param id="1" name="Message">&quot;Image upload error!&quot; &amp; AJAX.LastData</param>
+                        </action>
+                        <action id="0" name="Call function" sid="353734811849758" type="Function">
+                            <param id="0" name="Name">&quot;UnBlockUI&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" inactive="1" sid="931797601014130" title="CheckOut">
+            <sub-events>
+                <variable constant="0" name="IsImageUploaded" sid="562214361955141" static="1" type="number">-1</variable>
+                <variable constant="0" name="FakeLoading" sid="218468981207094" static="1" type="number">0</variable>
+                <event-block sid="541128179677432">
+                    <conditions>
+                        <condition id="0" name="On function" sid="972604458730878" type="Function">
+                            <param id="0" name="Name">&quot;PreviewUploaded&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="579215025656477" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="415045577310630">
+                    <conditions>
+                        <condition id="-4" name="Trigger once while true" sid="659662036623002" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="209675261656497" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">-1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="140371526410582" type="System">
+                            <param id="0" name="Group name">&quot;PhasesChange&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="658934543003254" type="System">
+                            <param id="0" name="Group name">&quot;AvatarEditor&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="452198705875187" type="System">
+                            <param id="0" name="Seconds">CCON_TIMEOUT</param>
+                        </action>
+                        <action id="0" name="Call function" sid="459244555591127" type="Function">
+                            <param id="0" name="Name">&quot;UnBlockUI&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="922773986749876" type="System">
+                            <param id="0" name="Group name">&quot;PhasesChange&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="149912439382774" type="System">
+                            <param id="0" name="Group name">&quot;AvatarEditor&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="762240941171662" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="0" name="Call function" sid="511317825771422" type="Function">
+                            <param id="0" name="Name">&quot;ShowError&quot;</param>
+                            <param id="1" name="Parameter {n}">&quot;Something goes wrong on checkout...please try again&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="276050378609556">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="746577238628739" type="System">
+                            <param id="0" name="Interval (seconds)">0.5</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="563465828466869" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="824732201672657" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Value">int(Browser.ExecJS(&quot;imageUploaded;&quot;))</param>
+                        </action>
+                        <action id="14" name="Log" sid="243675825163460" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Status &quot; &amp;IsImageUploaded</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="572470772055474">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="857686240069461" type="System">
+                                    <param id="0" name="Variable">IsImageUploaded</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="362868141499479" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">100</param>
+                                </action>
+                                <action id="0" name="Call function" sid="436504610069592" type="Function">
+                                    <param id="0" name="Name">&quot;BlockUI&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;Finished!&#x0D;&#x0A;100%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="364491483844244">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="936132879055775" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Call function" sid="238923600138223" type="Function">
+                                    <param id="0" name="Name">&quot;BlockUI&quot;</param>
+                                    <param id="1" name="Parameter {n}">&quot;Finishing stuff... please be patient&#x0D;&#x0A;&quot;&amp;FakeLoading-1&amp;&quot;%&quot;</param>
+                                </action>
+                                <action disabled="1" id="-10" name="Add to" sid="370048612271235" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="537857350218627" type="System">
+                                    <param id="0" name="Variable">FakeLoading</param>
+                                    <param id="1" name="Value">max(int(Browser.ExecJS(&quot;percentComplete;&quot;)),1)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="685627932536014">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="257110898127444" type="System">
+                            <param id="0" name="Variable">IsImageUploaded</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">1</param>
+                        </condition>
+                        <condition id="-4" name="Trigger once while true" sid="192140829249036" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="325507709601658" type="System">
+                            <param id="0" name="Seconds">0.5</param>
+                        </action>
+                        <action id="0" name="Call function" sid="300025114848798" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                            <param id="1" name="Parameter {n}">(Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="14" name="Log" sid="258923030379899" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;RESULT &quot; &amp; (Browser.ExecJS(&quot;textresult;&quot;))</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="469265952825496" type="Canvas">
+                            <param id="0" name="Instance variable">LastScreen</param>
+                            <param id="1" name="Value">&quot;&quot;</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="117102128394713" type="System">
+                            <param id="0" name="Group name">&quot;CheckOut&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
