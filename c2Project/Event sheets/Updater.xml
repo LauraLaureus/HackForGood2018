@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Updater</name>
+    <events>
+        <event-block sid="697104639572439">
+            <conditions>
+                <condition id="19" name="On update found" sid="693415746007376" type="Browser" />
+            </conditions>
+            <actions>
+                <action id="0" name="Alert" sid="430803245700003" type="Browser">
+                    <param id="0" name="Message">&quot;Aggiornamento disponibile, ricaricare la pagina o attendere che il gioco ricarichi automaticamente appena terminato l&apos;aggiornamento&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="932362397764338">
+            <conditions>
+                <condition id="20" name="On update ready" sid="459233863390677" type="Browser" />
+            </conditions>
+            <actions>
+                <action id="9" name="Reload" sid="367873865516841" type="Browser" />
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>

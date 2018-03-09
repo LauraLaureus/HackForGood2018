@@ -3,6 +3,7 @@
     <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
     <name>lvlMain</name>
     <events>
+        <include>Updater</include>
         <variable comment="Sito base" constant="1" name="CCON_BASEURL" sid="594909944114999" static="0" type="text">http://25inch.me</variable>
         <variable comment="Sito per upload foto" constant="1" name="CANVASUPLOAD_URL" sid="423671111371607" static="0" type="text">/wp-content/themes/zerif-pro-child/avatar-creator/canvasupload.php</variable>
         <variable comment="file grande AL MASSIMO" constant="1" name="UPLOAD_MAX" sid="753430256516278" static="0" type="number">8096000</variable>

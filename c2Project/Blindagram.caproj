@@ -91,6 +91,7 @@
     </layout-folder>
     <event-folder>
         <event-sheet>lvlMain.xml</event-sheet>
+        <event-sheet>Updater.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AJAX" uid="0" />
