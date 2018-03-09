@@ -22,7 +22,8 @@
         <div class="userInterface">
             Enter the URL to an image of an image you want to analyze, the click the <strong>Analyze image</strong> button.
             <br><br>
-            Image to analyze: <input type="text" name="inputImage" id="inputImage" value="Enter image URL here." />
+            Image to analyze: <input type="file" id="image_to_upload"/> 
+            <!-- <input type="text" name="inputImage" id="inputImage" value="Enter image URL here." /> -->
             <button onclick="analyzeButtonClick()">Analyze Image</button>
             <br><br>
             <div class="wrapper">
@@ -35,7 +36,7 @@
                 <div class="imageDiv">
                     Source image:<br>
                     <span id="captionSpan"></span><br>
-                    <img id="sourceImage" onerror="common.imageLoadError()"/>
+                    <img id="sourceImage" src="testImage.jpg" onerror="common.imageLoadError()"/>
                 </div>
             </div>
             <div class="subKeyDiv">
@@ -72,11 +73,24 @@ function analyzeButtonClick() {
     $("#responseTextArea").val("");
     $("#captionSpan").text("");
     
+    //- Original version -- Only shows the image in the field
     // Display the image.
     var sourceImageUrl = $("#inputImage").val();
     $("#sourceImage").attr("src", sourceImageUrl);
     
-    AnalyzeImage(sourceImageUrl, $("#responseTextArea"), $("#captionSpan"));
+    //AnalyzeImage(sourceImageUrl, $("#responseTextArea"), $("#captionSpan"));
+
+    //Form data version
+
+    // var formData = new FormData(); //Form data approach
+    var file = this.image_to_upload.files[0];
+    // if(formData) //Form data approach
+    // {
+    //     formData.append("image",file);
+    // }
+    getBase64(file);
+    var base64data = file;
+    AnalyzeImage(base64data,$("#responseTextArea"),$("#captionSpan"))
 }
 
 /* Analyze the image at the specified URL by using Microsoft Cognitive Services Analyze Image API.
@@ -86,7 +100,7 @@ function analyzeButtonClick() {
  *                             an error.
  * @param {<span> element} captionSpan - The span to display the image caption.
  */
-function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
+function AnalyzeImage(base64data, responseTextArea, captionSpan) { //EY!!! using FORMDATA version sourceImageURL == formData
     // Request parameters.
     var params = {
         "visualFeatures": "Categories,Description,Color",
@@ -96,25 +110,30 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
     
     // Perform the REST API call.
     $.ajax({
-        url: common.uriBasePreRegion + 
-             $("#subscriptionRegionSelect").val() + 
+        url: common.uriBasePreRegion + "westeurope" +
+            //  $("#subscriptionRegionSelect").val() + 
              common.uriBasePostRegion + 
              common.uriBaseAnalyze +
              "?" + 
              $.param(params),
-                    
+        processData: false,
+        contentType: false,         
         // Request headers.
         beforeSend: function(jqXHR){
-            jqXHR.setRequestHeader("Content-Type","application/json");
+            // jqXHR.setRequestHeader("Content-Type","application/json"); //ORIGINAL
+            jqXHR.setRequestHeader("Content-Type","application/octet-stream");
             jqXHR.setRequestHeader("Ocp-Apim-Subscription-Key", 
-                encodeURIComponent($("#subscriptionKeyInput").val()));
+                // encodeURIComponent($("#subscriptionKeyInput").val())); //ORIGINAL
+                encodeURIComponent("41e04f3666d346c4a8b20a8222925598"));
         },
         
         type: "POST",
         
         // Request body.
-        data: '{"url": ' + '"' + sourceImageUrl + '"}',
+        // data: '{"url": ' + '"' + sourceImageUrl + '"}',
+         data: makeblob("data:image/png;base64,"+base64data)  ,
     })
+
     
     .done(function(data) {
         // Show formatted JSON on webpage.
@@ -143,6 +162,40 @@ function AnalyzeImage(sourceImageUrl, responseTextArea, captionSpan) {
         // Show the error message.
         alert(errorString);
     });
+}
+
+
+makeblob = function (dataURL) {
+            var BASE64_MARKER = ';base64,';
+            if (dataURL.indexOf(BASE64_MARKER) == -1) {
+                var parts = dataURL.split(',');
+                var contentType = parts[0].split(':')[1];
+                var raw = decodeURIComponent(parts[1]);
+                return new Blob([raw], { type: contentType });
+            }
+            var parts = dataURL.split(BASE64_MARKER);
+            var contentType = parts[0].split(':')[1];
+            var raw = window.atob(parts[1]);
+            var rawLength = raw.length;
+
+            var uInt8Array = new Uint8Array(rawLength);
+
+            for (var i = 0; i < rawLength; ++i) {
+                uInt8Array[i] = raw.charCodeAt(i);
+            }
+
+            return new Blob([uInt8Array], { type: contentType });
+        }
+
+function getBase64(file) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+     console.log(reader.result);
+   };
+   reader.onerror = function (error) {
+     console.log('Error: ', error);
+   };
 }
 
 </script>
