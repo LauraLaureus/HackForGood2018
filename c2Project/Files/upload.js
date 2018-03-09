@@ -7,8 +7,6 @@ var callResult = "";
 	function processPhoto(base64Photo, filename)
 	{
 		AnalyzeImage(base64Photo);
-		
-		
 	}
 
 	
@@ -59,13 +57,12 @@ var callResult = "";
 	
 		
 		.done(function(data) {
-			imageUploaded = 1;
 			callResult = makeHuman(data);
-			// percentComplete = 100; //await the second 
 			percentComplete = (data.faces.length == 0 ? 100 : 70 );
 			if(percentComplete == 100)
 			{
 				textresult = callResult;
+				imageUploaded = 1;
 			} 
 			else
 			{
@@ -125,9 +122,11 @@ AnalyzeFaces = function(base64data)
 
 	
 	.done(function(data) {
-		imageUploaded = 1;
-		textresult += describeFaces(data);
+		var aux = describeFaces(data);
+		textresult = callResult + aux ;
+		console.log("TTS: result " + textresult);
 		percentComplete = 100; //await the second 
+		imageUploaded = 1;
 		showError = false;
 		
 	})
@@ -167,24 +166,45 @@ describeFaces = function(jsonResponse)
 
 	var index = 1;
 	jsonResponse.forEach(face => {
-		str_humanResponse += "The person number " + index.toString() + " ";
-		str_humanResponse += describeSingleFace(face);
+		if(jsonResponse.length > 1)
+		{
+			str_humanResponse += "The person number " + index.toString() + " ";
+		}
+		else
+		{
+			str_humanResponse += "The person ";
+		}
+		str_humanResponse += describeSingleFace(face,jsonResponse.length == 1);
 	});
 
 	return str_humanResponse;
 }
 
-describeSingleFace = function(face)
+describeSingleFace = function(face,ignoreGender)
 {
 	var result = "";
+	var aux = "";
 
-	result += expressEmotion(face.faceAttributes.emotion);
-	result += "This person is a " + (face.faceAttributes.gender == "female" ? "woman" : "man") + "."; 
-	result += isSmiling(face.faceAttributes.smile);
+	aux = expressEmotion(face.faceAttributes.emotion);
+	result += aux != null ? aux : "";
+	
+	if(!ignoreGender)
+		result += "This person is a " + (face.faceAttributes.gender == "female" ? "woman" : "man") + ".";
+	
+	aux =  isSmiling(face.faceAttributes.smile);
+	result += aux != null ? aux : "";
+
 	result += (face.faceAttributes.glasses != "NoGlasses"? "This person has glasses.": "");
-	result += describeFacialHair(face.faceAttributes.facialHair);
-	result += describeHeadHair(face.faceAttributes.hair);
-	result += describeMakeUp(face.faceAttributes.makeup);
+
+	aux = describeFacialHair(face.faceAttributes.facialHair);
+	result += aux != null ? aux : "";
+	
+	aux = describeHeadHair(face.faceAttributes.hair);
+	result += aux != null ? aux : "";
+	
+	aux = describeMakeUp(face.faceAttributes.makeup);
+	result += aux != null ? aux : "";
+	
 	return result;
 }
 
@@ -226,7 +246,7 @@ describeHeadHair = function(hair)
 
 	if(hairColor.length > 0)
 	{
-		result += makeSentence("This person","","has","hair",hairColor,"");
+		result += makeSentence("This person","","has","hair color",hairColor,"");
 	}
 	return result;
 }
@@ -301,17 +321,11 @@ expressEmotion = function(emotion)
 makeHuman = function(jsonResponse)
 {
 	var str_humanResponse = "";
-	//Microsoft response
-	// jsonResponse.description.captions.forEach(caption => {
-	// 	str_humanResponse += caption.text + ".";
-	// });
-
 	str_humanResponse += imageType(jsonResponse.imageType);
 	str_humanResponse += adultContent(jsonResponse.adult);
 	str_humanResponse += facesContent(jsonResponse.faces);
 	str_humanResponse += readCaptions(jsonResponse.description);
 
-	console.log(str_humanResponse);
 	return str_humanResponse;
 }
 
