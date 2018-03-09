@@ -369,7 +369,7 @@ imageType = function (imageType)
 	var verb = "is";
 
 	var directObj = chooseOneImageType(imageType);
-	return makeSentence(subject,"",verb,directObj,"","");
+	return directObj == "photo" ? "": makeSentence(subject,"",verb,directObj,"","");
 }
 
 chooseOneImageType = function(imageType)
