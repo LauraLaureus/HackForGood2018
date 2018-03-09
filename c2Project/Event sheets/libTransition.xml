@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>libTransition</name>
+    <events>
+        <event-group description="" sid="501533539224266" title="TransitionLib">
+            <sub-events>
+                <variable constant="0" name="aux_HelpIdle" sid="208003524860964" static="1" type="number">0</variable>
+                <event-block sid="954974832197622">
+                    <conditions>
+                        <condition id="0" name="On function" sid="266234125259062" type="Function">
+                            <param id="0" name="Name">&quot;GoToLvl&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="7" name="Stop speaking" sid="331522765930082" type="UserMedia" />
+                        <action id="-12" name="Set group active" sid="506322171600050" type="System">
+                            <param id="0" name="Group name">&quot;TouchLib&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="664308585298617" type="transitionOverlay">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="219199402765092" type="transitionOverlay" />
+                        <action id="-10" name="Set value" sid="783378661713868" type="transitionOverlay">
+                            <param id="0" name="Instance variable">Target</param>
+                            <param id="1" name="Value">Function.Param(0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="915771196876752">
+                    <conditions>
+                        <condition behavior="Fade" id="1" name="On fade-in finished" sid="289405658273021" type="transitionOverlay" />
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Wait" sid="154305982205706" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="977263965766737" type="System">
+                            <param id="0" name="Layout">transitionOverlay.Target</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="195933286930687">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="870982809555923" type="transitionOverlay" />
+                    </conditions>
+                    <actions />
+                </event-block>
+                <comment>IdleSystem</comment>
+                <event-block sid="405614477846240">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="740654504321081" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="584173054743069" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                            <param id="1" name="Parameter {n}">Dictionary.Get(LayoutName&amp;&quot;_base&quot;)</param>
+                        </action>
+                        <action behavior="Timer" id="0" name="Start timer" sid="296398237056511" type="sysTouchStart">
+                            <param id="0" name="Duration">3</param>
+                            <param id="1" name="Type">0</param>
+                            <param id="2" name="Tag">&quot;idle&quot;</param>
+                        </action>
+                        <action id="-16" name="Wait" sid="406055846153851" type="System">
+                            <param id="0" name="Seconds">0.1</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="278960558903256" type="System">
+                            <param id="0" name="Group name">&quot;TouchLib&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="717971731507504">
+                    <conditions>
+                        <condition behavior="Timer" id="0" name="On timer" sid="741828150058280" type="sysTouchStart">
+                            <param id="0" name="Tag">&quot;idle&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="505346705153404" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                            <param id="1" name="Parameter {n}">Dictionary.Get(LayoutName&amp;&quot;_help&quot;)</param>
+                        </action>
+                        <action id="14" name="Log" sid="580615413024207" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;IDLE &quot; &amp; Dictionary.Get(LayoutName&amp;&quot;_help&quot;)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

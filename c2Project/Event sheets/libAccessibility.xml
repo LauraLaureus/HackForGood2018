@@ -6,7 +6,7 @@
         <event-group description="" sid="376194310115917" title="Accessibility">
             <sub-events>
                 <variable constant="0" name="Speak_LanguagesURI" sid="913202146669295" static="1" type="text"></variable>
-                <event-block sid="463112865048062">
+                <event-block disabled="1" sid="463112865048062">
                     <conditions>
                         <condition id="0" name="On function" sid="714907135959092" type="Function">
                             <param id="0" name="Name">&quot;Speak&quot;</param>
@@ -14,7 +14,7 @@
                     </conditions>
                     <actions />
                     <sub-events>
-                        <event-block sid="215026017290102">
+                        <event-block disabled="1" sid="215026017290102">
                             <conditions>
                                 <condition id="-8" name="Compare two values" sid="365406799048864" type="System">
                                     <param id="0" name="First value">tokencount(Speak_LanguagesURI,&quot;;&quot;)</param>
@@ -33,7 +33,7 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="176142603171543">
+                        <event-block disabled="1" sid="176142603171543">
                             <conditions>
                                 <condition id="-22" name="Else" sid="139317853895107" type="System" />
                             </conditions>
@@ -48,7 +48,7 @@
                                 </action>
                             </actions>
                         </event-block>
-                        <event-block sid="376398708016974">
+                        <event-block disabled="1" sid="376398708016974">
                             <conditions />
                             <actions>
                                 <action id="0" name="Set text" sid="920436928751262" type="ChatWindow">
@@ -96,7 +96,7 @@
                                     <param id="1" name="Language">&quot;en-US&quot;</param>
                                     <param id="2" name="Voice URI">tokenat(Speak_LanguagesURI,0,&quot;;&quot;)</param>
                                     <param id="3" name="Volume">10</param>
-                                    <param id="4" name="Rate">1</param>
+                                    <param id="4" name="Rate">1.2</param>
                                     <param id="5" name="Pitch">1</param>
                                 </action>
                             </actions>
