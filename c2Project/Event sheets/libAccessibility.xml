@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>libAccessibility</name>
+    <events>
+        <event-group description="" sid="376194310115917" title="Accessibility">
+            <sub-events>
+                <variable constant="0" name="Speak_LanguagesURI" sid="913202146669295" static="1" type="text"></variable>
+                <event-block sid="463112865048062">
+                    <conditions>
+                        <condition id="0" name="On function" sid="714907135959092" type="Function">
+                            <param id="0" name="Name">&quot;Speak&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="215026017290102">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="365406799048864" type="System">
+                                    <param id="0" name="First value">tokencount(Speak_LanguagesURI,&quot;;&quot;)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Speak text" sid="153522295308511" type="UserMedia">
+                                    <param id="0" name="Text">Function.Param(0)</param>
+                                    <param id="1" name="Language">&quot;&quot;</param>
+                                    <param id="2" name="Voice URI">tokenat(Speak_LanguagesURI,floor(random(tokencount(Speak_LanguagesURI,&quot;;&quot;))),&quot;;&quot;)</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="4" name="Rate">1.2</param>
+                                    <param id="5" name="Pitch">random(2)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="176142603171543">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="139317853895107" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Speak text" sid="254687740410023" type="UserMedia">
+                                    <param id="0" name="Text">Function.Param(0)</param>
+                                    <param id="1" name="Language">&quot;&quot;</param>
+                                    <param id="2" name="Voice URI">tokenat(Speak_LanguagesURI,0,&quot;;&quot;)</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="4" name="Rate">1.2</param>
+                                    <param id="5" name="Pitch">random(2)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="376398708016974">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set text" sid="920436928751262" type="ChatWindow">
+                                    <param id="0" name="Text">Self.Text&amp; Function.Param(0)&amp;newline</param>
+                                </action>
+                                <action id="9" name="Scroll to bottom" sid="334904797705577" type="ChatWindow" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="203809742807135">
+                    <conditions>
+                        <condition id="0" name="On function" sid="118361873561545" type="Function">
+                            <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="673636184215928">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="436504679429696" type="System">
+                                    <param id="0" name="First value">tokencount(Speak_LanguagesURI,&quot;;&quot;)</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Second value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Speak text" sid="918802614133748" type="UserMedia">
+                                    <param id="0" name="Text">Function.Param(0)</param>
+                                    <param id="1" name="Language">&quot;&quot;</param>
+                                    <param id="2" name="Voice URI">tokenat(Speak_LanguagesURI,1,&quot;;&quot;)</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="4" name="Rate">1.5</param>
+                                    <param id="5" name="Pitch">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="895463899183214">
+                            <conditions>
+                                <condition id="-22" name="Else" sid="699520252952146" type="System" />
+                            </conditions>
+                            <actions>
+                                <action id="6" name="Speak text" sid="483579683147849" type="UserMedia">
+                                    <param id="0" name="Text">Function.Param(0)</param>
+                                    <param id="1" name="Language">&quot;en-US&quot;</param>
+                                    <param id="2" name="Voice URI">tokenat(Speak_LanguagesURI,0,&quot;;&quot;)</param>
+                                    <param id="3" name="Volume">10</param>
+                                    <param id="4" name="Rate">1</param>
+                                    <param id="5" name="Pitch">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="455156227076683">
+                            <conditions />
+                            <actions>
+                                <action id="0" name="Set text" sid="636525856550809" type="ChatWindow">
+                                    <param id="0" name="Text">Self.Text&amp; Function.Param(0)&amp;newline</param>
+                                </action>
+                                <action id="9" name="Scroll to bottom" sid="561507545322906" type="ChatWindow" />
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="444188880705856">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="733451033993856" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="408855093236096" type="Function">
+                            <param id="0" name="Name">&quot;Init_Speak&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="537533127669322">
+                    <conditions>
+                        <condition id="0" name="On function" sid="781181647537146" type="Function">
+                            <param id="0" name="Name">&quot;Init_Speak&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="627266799179660">
+                            <conditions>
+                                <condition id="-12" name="Repeat" sid="388335957551169" type="System">
+                                    <param id="0" name="Count">UserMedia.VoiceCount</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block any="1" sid="292379995242201">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="731925170338371" type="System">
+                                            <param id="0" name="First value">find(UserMedia.VoiceURIAt(loopindex), &quot;US&quot;)</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="608154891533178" type="System">
+                                            <param id="0" name="First value">find(UserMedia.VoiceURIAt(loopindex), &quot;UK&quot;)</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                        <condition id="-8" name="Compare two values" sid="822329037972536" type="System">
+                                            <param id="0" name="First value">find(UserMedia.VoiceURIAt(loopindex), &quot;English&quot;)</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="658529414391165" type="System">
+                                            <param id="0" name="Variable">Speak_LanguagesURI</param>
+                                            <param id="1" name="Value">Speak_LanguagesURI&amp;UserMedia.VoiceURIAt(loopindex)&amp;&quot;;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

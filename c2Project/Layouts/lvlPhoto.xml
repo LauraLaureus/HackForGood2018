@@ -2,7 +2,7 @@
 <c2layout>
     <name>lvlPhoto</name>
     <sid>8873350371196689</sid>
-    <event-sheet>lvlMain</event-sheet>
+    <event-sheet>evsMain</event-sheet>
     <size>
         <width>720</width>
         <height>1280</height>

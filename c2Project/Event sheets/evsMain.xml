@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>evsMain</name>
+    <events>
+        <include>libPhotoAnalyze</include>
+        <include>libAccessibility</include>
+        <include>Updater</include>
+        <variable comment="Sito base" constant="1" name="CCON_BASEURL" sid="594909944114999" static="0" type="text">http://25inch.me</variable>
+        <variable comment="Sito per upload foto" constant="1" name="CANVASUPLOAD_URL" sid="423671111371607" static="0" type="text">/wp-content/themes/zerif-pro-child/avatar-creator/canvasupload.php</variable>
+        <variable comment="file grande AL MASSIMO" constant="1" name="UPLOAD_MAX" sid="753430256516278" static="0" type="number">8096000</variable>
+        <variable comment="File grande ALMENO" constant="1" name="UPLOAD_MIN" sid="126711526131548" static="0" type="number">300000</variable>
+        <variable comment="Tempo massimo di attesa prima di errore" constant="1" name="CCON_TIMEOUT" sid="434731935076487" static="0" type="number">300</variable>
+        <variable comment="html5 cache blob image" constant="0" name="Upload_BLOB" sid="147195885498941" static="0" type="text"></variable>
+        <variable comment="Nome file uploadato" constant="0" name="CustomName" sid="500236237963371" static="0" type="text">testName</variable>
+        <event-group description="" sid="660997081783785" title="Lib_RequestFullScreen">
+            <sub-events>
+                <event-block sid="917173611028117">
+                    <conditions>
+                        <condition id="14" name="On tap" sid="427921517906778" type="Touch" />
+                        <condition id="-20" name="Is on mobile device" sid="217464776840371" type="System" />
+                        <condition id="10" inverted="1" name="Is fullscreen" sid="492156159357305" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="10" name="Request fullscreen" sid="262880416554466" type="Browser">
+                            <param id="0" name="Mode">3</param>
+                        </action>
+                        <action id="-12" name="Set group active" sid="651385490277726" type="System">
+                            <param id="0" name="Group name">&quot;Lib_RequestFullScreen&quot;</param>
+                            <param id="1" name="State">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-block sid="509110588046684">
+            <conditions>
+                <condition id="14" name="On tap" sid="863376270267438" type="Touch" />
+            </conditions>
+            <actions>
+                <action id="0" name="Request camera" sid="881582956557869" type="UserMedia">
+                    <param id="0" name="Source">1</param>
+                    <param id="1" name="Preferred width">0</param>
+                    <param id="2" name="Preferred height">0</param>
+                </action>
+                <action id="0" name="Call function" sid="207869216310531" type="Function">
+                    <param id="0" name="Name">&quot;Speak_UI&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Snapping photo&quot;</param>
+                </action>
+                <action id="-16" name="Wait" sid="484674254620633" type="System">
+                    <param id="0" name="Seconds">1.0</param>
+                </action>
+                <action id="0" name="Call function" sid="170398570797532" type="Function">
+                    <param id="0" name="Name">&quot;TakeSnapshot&quot;</param>
+                    <param id="1" name="Parameter {n}"></param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="866097904280526" title="TouchLib">
+            <sub-events>
+                <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>
+                <variable constant="0" name="max_deltaX" sid="278580273302000" static="1" type="number">200</variable>
+                <event-block sid="300581366257919">
+                    <conditions />
+                    <actions />
+                </event-block>
+                <event-block sid="206247513599680">
+                    <conditions>
+                        <condition id="10" name="On Nth touch start" sid="778379346986029" type="Touch">
+                            <param id="0" name="Touch number">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="941714440105820" type="sysTouchStart">
+                            <param id="0" name="X">Touch.XAt(0)</param>
+                            <param id="1" name="Y">Touch.YAt(0)</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="699121071939908">
+                    <conditions>
+                        <condition id="11" name="On Nth touch end" sid="808028548731929" type="Touch">
+                            <param id="0" name="Touch number">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Set position" sid="190743869641025" type="sysTouchEnd">
+                            <param id="0" name="X">Touch.XAt(0)</param>
+                            <param id="1" name="Y">Touch.YAt(0)</param>
+                        </action>
+                        <action id="14" name="Log" sid="118980758973684" type="Browser">
+                            <param id="0" name="Type">0</param>
+                            <param id="1" name="Message">&quot;Touch deltaX &quot; &amp; abs(sysTouchStart.X - sysTouchEnd.X) &amp; &quot; deltaY &quot; &amp; abs(sysTouchStart.y- sysTouchEnd.Y)</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="592795753926269">
+                            <conditions>
+                                <condition id="-8" name="Compare two values" sid="723540543329046" type="System">
+                                    <param id="0" name="First value">abs(sysTouchStart.y- sysTouchEnd.Y)</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Second value">max_deltaY</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>Tap</comment>
+                                <event-block sid="119221486020080">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="849659680419320" type="System">
+                                            <param id="0" name="First value">abs(sysTouchStart.X- sysTouchEnd.X)</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Second value">max_deltaX</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="550548602409168">
+                                            <conditions>
+                                                <condition id="-2" name="Compare Y" sid="401059200373184" type="sysTouchStart">
+                                                    <param id="0" name="Comparison">2</param>
+                                                    <param id="1" name="Y co-ordinate">LayoutHeight/2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="349078848700610" type="Function">
+                                                    <param id="0" name="Name">&quot;Interact_TapTop&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="211899473850554">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="120188656005788" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="225381488503842" type="Function">
+                                                    <param id="0" name="Name">&quot;Interact_TapBottom&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Swipe</comment>
+                                <event-block sid="113147032653376">
+                                    <conditions>
+                                        <condition id="-22" name="Else" sid="424925781835955" type="System" />
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <comment>Right</comment>
+                                        <event-block sid="501899454217013">
+                                            <conditions>
+                                                <condition id="-8" name="Compare two values" sid="926150344453229" type="System">
+                                                    <param id="0" name="First value">(sysTouchStart.X- sysTouchEnd.X)</param>
+                                                    <param id="1" name="Comparison">2</param>
+                                                    <param id="2" name="Second value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="571392821126212" type="Function">
+                                                    <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Left</comment>
+                                        <event-block sid="204574562014376">
+                                            <conditions>
+                                                <condition id="-22" name="Else" sid="112152323402023" type="System" />
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Call function" sid="600861744617779" type="Function">
+                                                    <param id="0" name="Name">&quot;Interact_SwipeLeft&quot;</param>
+                                                    <param id="1" name="Parameter {n}"></param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

@@ -14,14 +14,19 @@
         <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
         <plugin author="Scirra" id="Function" version="1">Function</plugin>
         <plugin author="Yann Granjon" id="JSON" version="1.200000048">JSON</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
         <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
         <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
         <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
         <plugin author="R0J0hound" id="c2canvas" version="2">Canvas</plugin>
         <plugin author="Joe7" id="cjs" version="1">Call JS</plugin>
         <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
     </used-plugins>
-    <used-behaviors />
+    <used-behaviors>
+        <behavior author="Scirra" id="Anchor" version="1">Anchor</behavior>
+    </used-behaviors>
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
@@ -36,11 +41,11 @@
     <configuration-settings>
         <prop name="Clear background">Yes</prop>
         <prop name="Enable WebGL">On</prop>
-        <prop name="Fullscreen in browser">Letterbox scale</prop>
+        <prop name="Fullscreen in browser">Scale outer</prop>
         <prop name="Fullscreen scaling">High quality</prop>
         <prop name="Loader style">Progress bar &amp; logo</prop>
         <prop name="Orientations">Portrait</prop>
-        <prop name="Pause on unfocus">No</prop>
+        <prop name="Pause on unfocus">Yes</prop>
         <prop name="Physics engine">Box2D asm.js</prop>
         <prop name="Preview browser">(default)</prop>
         <prop name="Sampling">Linear</prop>
@@ -69,29 +74,74 @@
             <object-type name="UserMedia" sid="964256070077041">
                 <plugin id="UserMedia" />
             </object-type>
+            <object-type name="Browser" sid="154533692587050">
+                <plugin id="Browser" />
+            </object-type>
+            <object-type name="Canvas" sid="608210372632319">
+                <plugin id="c2canvas" />
+                <instance-variables>
+                    <instance-variable name="LastScreen" sid="355382543332734" type="string" />
+                    <instance-variable name="LoadingScreenshot" sid="855649994948385" type="boolean" />
+                </instance-variables>
+                <texture />
+            </object-type>
         </object-folder>
-        <object-type name="Browser" sid="154533692587050">
-            <plugin id="Browser" />
-        </object-type>
         <object-type name="ChatWindow" sid="613100327990384">
             <plugin id="TextBox" />
         </object-type>
-        <object-type name="Canvas" sid="608210372632319">
-            <plugin id="c2canvas" />
-            <instance-variables>
-                <instance-variable name="LastScreen" sid="355382543332734" type="string" />
-                <instance-variable name="LoadingScreenshot" sid="855649994948385" type="boolean" />
-            </instance-variables>
+        <object-type name="TiledBackground" sid="732384626661129">
+            <plugin id="TiledBg" />
             <texture />
         </object-type>
+        <object-type name="sprHeader" sid="154544906401329">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="334149950648456" speed="5">
+                    <frame duration="1" hotspotX="0" hotspotY="0" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="lblCurrentScreen" sid="672352382127215">
+            <plugin id="Text" />
+        </object-type>
+        <object-type name="sysTouchStart" sid="319564715274268">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="601014184276614" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="sysTouchEnd" sid="155690389717264">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="608943552679489" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
-    <families />
+    <families>
+        <family name="fmlAnchorStuff" plugin-id="Sprite" sid="942116454520667">
+            <members>
+                <member>sprHeader</member>
+            </members>
+            <behaviors>
+                <behavior-type name="Anchor" sid="548594176054810">
+                    <behavior id="Anchor" />
+                </behavior-type>
+            </behaviors>
+        </family>
+    </families>
     <layout-folder>
+        <layout>lvlCommon.xml</layout>
         <layout>lvlPhoto.xml</layout>
     </layout-folder>
     <event-folder>
-        <event-sheet>lvlMain.xml</event-sheet>
+        <event-sheet>evsMain.xml</event-sheet>
         <event-sheet>Updater.xml</event-sheet>
+        <event-sheet>libAccessibility.xml</event-sheet>
+        <event-sheet>libPhotoAnalyze.xml</event-sheet>
     </event-folder>
     <global-instances>
         <global-instance type="AJAX" uid="0" />
