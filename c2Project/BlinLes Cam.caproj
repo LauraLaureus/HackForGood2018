@@ -238,6 +238,14 @@
             </behaviors>
             <texture />
         </object-type>
+        <object-type name="photo_screenshot" sid="597507624279836">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="908760541462557" speed="5">
+                    <frame duration="1" hotspotX="0.50193" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\screenshots\photo_screenshot.PNG" />
+                </animation>
+            </animation-folder>
+        </object-type>
     </object-folder>
     <families>
         <family name="fmlAnchorStuff" plugin-id="Sprite" sid="942116454520667">
@@ -261,6 +269,12 @@
                     <behavior id="Anchor" />
                 </behavior-type>
             </behaviors>
+        </family>
+        <family name="lblStuff" plugin-id="Text" sid="780972574119342">
+            <members>
+                <member>lblCurrentScreen</member>
+                <member>lblInit</member>
+            </members>
         </family>
     </families>
     <layout-folder>

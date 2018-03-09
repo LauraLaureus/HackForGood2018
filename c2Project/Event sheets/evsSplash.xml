@@ -19,6 +19,10 @@
                     <param id="0" name="Layer">&quot;Header&quot;</param>
                     <param id="1" name="Visibility">0</param>
                 </action>
+                <action id="5" name="Set web font" sid="939963458239113" type="lblStuff">
+                    <param id="0" name="Family name">&quot;Montserrat&apos;, sans-serif&quot;</param>
+                    <param id="1" name="CSS URL">&quot;https://fonts.googleapis.com/css?family=Montserrat:700&quot;</param>
+                </action>
             </actions>
         </event-block>
         <event-group description="" sid="685482422440827" title="Init">

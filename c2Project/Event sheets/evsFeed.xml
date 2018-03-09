@@ -10,7 +10,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="230523951016485" type="lblCurrentScreen">
-                    <param id="0" name="Text">&quot;Feed&quot;</param>
+                    <param id="0" name="Text">&quot;STORIES&quot;</param>
                 </action>
             </actions>
         </event-block>

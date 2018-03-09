@@ -96,6 +96,47 @@
             <instances />
             <effects />
         </layer>
+        <layer name="mock" sid="358171792268094">
+            <initially-visible>0</initially-visible>
+            <background-color>255,255,255</background-color>
+            <transparent>1</transparent>
+            <parallax>
+                <x>1</x>
+                <y>1</y>
+            </parallax>
+            <zoom-rate>1</zoom-rate>
+            <opacity>0.3</opacity>
+            <force-own-texture>0</force-own-texture>
+            <global>0</global>
+            <use-render-cells>0</use-render-cells>
+            <blend-mode>0</blend-mode>
+            <effect-fallback>0</effect-fallback>
+            <instances>
+                <instance type="photo_screenshot" uid="21">
+                    <properties>
+                        <initial-visibility>Invisible</initial-visibility>
+                        <initial-animation>Default</initial-animation>
+                        <initial-frame>0</initial-frame>
+                        <collisions>Enabled</collisions>
+                    </properties>
+                    <blend-mode>0</blend-mode>
+                    <effect-fallback>0</effect-fallback>
+                    <world>
+                        <x>365.024658203</x>
+                        <y>633.850402832</y>
+                        <z>0</z>
+                        <width>766.894287109</width>
+                        <height>1332.441894531</height>
+                        <depth>0</depth>
+                        <hotspotX>0.501930475</hotspotX>
+                        <hotspotY>0.5</hotspotY>
+                        <angle>0</angle>
+                        <opacity>1</opacity>
+                    </world>
+                </instance>
+            </instances>
+            <effects />
+        </layer>
         <layer name="Current" sid="187294214198062">
             <initially-visible>1</initially-visible>
             <background-color>255,255,255</background-color>
@@ -128,7 +169,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>0</x>
-                        <y>100</y>
+                        <y>171</y>
                         <z>0</z>
                         <width>720</width>
                         <height>720</height>
@@ -163,7 +204,7 @@
                     <effect-fallback>0</effect-fallback>
                     <world>
                         <x>0</x>
-                        <y>100</y>
+                        <y>171</y>
                         <z>0</z>
                         <width>720</width>
                         <height>720</height>

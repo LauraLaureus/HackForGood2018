@@ -35,6 +35,7 @@
                 </event-block>
             </sub-events>
         </event-group>
+        <event-group description="" sid="584162873361246" title="Style" />
         <event-group description="" sid="866097904280526" title="TouchLib">
             <sub-events>
                 <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>

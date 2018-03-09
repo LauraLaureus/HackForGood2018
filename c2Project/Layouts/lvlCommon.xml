@@ -122,9 +122,9 @@
                     <properties>
                         <text>Main</text>
                         <initial-visibility>Visible</initial-visibility>
-                        <font>Calibri,-48,400,0</font>
+                        <font>Calibri,-60,400,0</font>
                         <color>255,255,255</color>
-                        <horizontal-alignment>Left</horizontal-alignment>
+                        <horizontal-alignment>Right</horizontal-alignment>
                         <vertical-alignment>Center</vertical-alignment>
                         <hotspot>Center</hotspot>
                         <wrapping>Word</wrapping>
@@ -133,7 +133,7 @@
                     <behavior-instances>
                         <behavior-instance type="Anchor">
                             <properties>
-                                <left-edge>Window left</left-edge>
+                                <left-edge>None</left-edge>
                                 <top-edge>Window top</top-edge>
                                 <right-edge>Window right</right-edge>
                                 <bottom-edge>None</bottom-edge>
@@ -144,11 +144,11 @@
                     <blend-mode>0</blend-mode>
                     <effect-fallback>0</effect-fallback>
                     <world>
-                        <x>515.03503418</x>
-                        <y>91.164016724</y>
+                        <x>480.078552246</x>
+                        <y>95.164016724</y>
                         <z>0</z>
-                        <width>396.912963867</width>
-                        <height>78.26474762</height>
+                        <width>437</width>
+                        <height>86</height>
                         <depth>0</depth>
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
@@ -200,32 +200,6 @@
                         <hotspotX>0.5</hotspotX>
                         <hotspotY>0.5</hotspotY>
                         <angle>0</angle>
-                        <opacity>1</opacity>
-                    </world>
-                </instance>
-                <instance type="UserMedia" uid="17">
-                    <behavior-instances>
-                        <behavior-instance type="Anchor">
-                            <properties>
-                                <left-edge>Window left</left-edge>
-                                <top-edge>Window top</top-edge>
-                                <right-edge>None</right-edge>
-                                <bottom-edge>None</bottom-edge>
-                                <initial-state>Enabled</initial-state>
-                            </properties>
-                        </behavior-instance>
-                    </behavior-instances>
-                    <blend-mode>0</blend-mode>
-                    <effect-fallback>0</effect-fallback>
-                    <world>
-                        <x>-26</x>
-                        <y>-131</y>
-                        <z>0</z>
-                        <width>50</width>
-                        <height>36</height>
-                        <depth>0</depth>
-                        <hotspotX>0</hotspotX>
-                        <hotspotY>0</hotspotY>
                         <opacity>1</opacity>
                     </world>
                 </instance>

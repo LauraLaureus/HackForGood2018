@@ -10,7 +10,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="101198776745467" type="lblCurrentScreen">
-                    <param id="0" name="Text">&quot;Photo&quot;</param>
+                    <param id="0" name="Text">&quot;PHOTO&quot;</param>
                 </action>
                 <action id="0" name="Request camera" sid="469913889640662" type="UserMedia">
                     <param id="0" name="Source">1</param>

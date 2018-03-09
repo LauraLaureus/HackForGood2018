@@ -10,7 +10,7 @@
             </conditions>
             <actions>
                 <action id="0" name="Set text" sid="933561456025746" type="lblCurrentScreen">
-                    <param id="0" name="Text">&quot;Main&quot;</param>
+                    <param id="0" name="Text">&quot;HOME&quot;</param>
                 </action>
                 <action disabled="1" id="0" name="Call function" sid="248253423558002" type="Function">
                     <param id="0" name="Name">&quot;Speak_UI&quot;</param>
