@@ -9,15 +9,25 @@
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>2m2oqhlgof90t</unique-id>
     <saved-with-version>25500</saved-with-version>
-    <used-plugins />
+    <used-plugins>
+        <plugin author="Scirra" id="AJAX" version="1">AJAX</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Function" version="1">Function</plugin>
+        <plugin author="Yann Granjon" id="JSON" version="1.200000048">JSON</plugin>
+        <plugin author="Scirra" id="TextBox" version="1">Text box</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Scirra" id="UserMedia" version="1">User Media</plugin>
+        <plugin author="Joe7" id="cjs" version="1">Call JS</plugin>
+        <plugin author="Scirra" id="filechooser" version="1">File chooser</plugin>
+    </used-plugins>
     <used-behaviors />
     <used-effects />
     <configurations>
         <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML5" />
     </configurations>
     <window-size>
-        <width>480</width>
-        <height>854</height>
+        <width>720</width>
+        <height>1280</height>
     </window-size>
     <pixel-rounding>0</pixel-rounding>
     <preview-effects>1</preview-effects>
@@ -35,15 +45,57 @@
         <prop name="Sampling">Linear</prop>
         <prop name="Use high-DPI display">Yes</prop>
     </configuration-settings>
-    <object-folder />
+    <object-folder>
+        <object-folder name="Lib">
+            <object-type name="AJAX" sid="332421340302756">
+                <plugin id="AJAX" />
+            </object-type>
+            <object-type global="1" name="CallJS" sid="698478322702623">
+                <plugin id="cjs" />
+            </object-type>
+            <object-type name="FileChooser" sid="379675451356139">
+                <plugin id="filechooser" />
+            </object-type>
+            <object-type name="Function" sid="143990055231292">
+                <plugin id="Function" />
+            </object-type>
+            <object-type global="1" name="JSON" sid="214718762311128">
+                <plugin id="JSON" />
+            </object-type>
+            <object-type name="Touch" sid="247795643539559">
+                <plugin id="Touch" />
+            </object-type>
+            <object-type name="UserMedia" sid="964256070077041">
+                <plugin id="UserMedia" />
+            </object-type>
+        </object-folder>
+        <object-type name="Browser" sid="154533692587050">
+            <plugin id="Browser" />
+        </object-type>
+        <object-type global="1" name="CallJS2" sid="545310498218624">
+            <plugin id="cjs" />
+        </object-type>
+        <object-type name="ChatWindow" sid="613100327990384">
+            <plugin id="TextBox" />
+        </object-type>
+    </object-folder>
     <families />
     <layout-folder>
-        <layout>Layout 1.xml</layout>
+        <layout>lvlIntro.xml</layout>
     </layout-folder>
     <event-folder>
         <event-sheet>Event sheet 1.xml</event-sheet>
     </event-folder>
-    <global-instances />
+    <global-instances>
+        <global-instance type="AJAX" uid="0" />
+        <global-instance type="Function" uid="3" />
+        <global-instance type="Touch" uid="4">
+            <properties>
+                <use-mouse-input>Yes</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Browser" uid="5" />
+    </global-instances>
     <sounds-folder />
     <music-folder />
     <files-folder>
