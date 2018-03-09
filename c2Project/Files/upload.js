@@ -153,15 +153,86 @@ makeHuman = function(jsonResponse)
 {
 	var str_humanResponse = "";
 	//Microsoft response
-	jsonResponse.description.captions.forEach(caption => {
-		str_humanResponse += caption.text + ".";
-	});
+	// jsonResponse.description.captions.forEach(caption => {
+	// 	str_humanResponse += caption.text + ".";
+	// });
+
+	str_humanResponse += imageType(jsonResponse.imageType);
+	str_humanResponse += adultContent(jsonResponse.adult);
+	// str_humanResponse +=
+
+	console.log(str_humanResponse);
 	return str_humanResponse;
 }
 
-makeSentence = function(subject,verb,directObj,adjetive,adverb)
+makeSentence = function(subject,negativeVerb,verb,directObj,adjetive,adverb)
 {
-	return subject + " " + verb +" " + adjetive + " " + directObj + " " + adverb + "."; 
+	return subject + " " + negativeVerb + " " + verb +" " + adjetive + " " + directObj + " " + adverb + "."; 
+}
+
+//use binary for negative particle of verb
+adverbFromConfidence = function(binary, confidence,thridpersonSingular)
+{
+	if(binary)
+	{
+		if(confidence >=0.45)
+		{
+			return "";
+		} // 60%
+		else
+		{
+			if(thridpersonSingular)
+			{
+				return "does not";
+			}
+			else
+			{
+				return "do not";
+			}
+		}
+	}
+
+	else
+	{
+		if(confidence < 0.45)
+		{
+			return "not quite sure";
+		}
+
+		else if(confidence < 0.65)
+		{
+			return "quite sure";
+		}
+
+		else
+		{
+			return "actually sure";
+		}
+
+	}
+}
+
+
+imageType = function (imageType)
+{
+	var subject = "This image";
+	var verb = "is";
+
+	var directObj = chooseOneImageType(imageType);
+	debugger;
+	return makeSentence(subject,"",verb,directObj,"","");
+}
+
+chooseOneImageType = function(imageType)
+{
+	if(imageType.clipArtType > 0.85 && imageType.lineDrawingType < 0.85)
+	{ return "clip art";}
+
+	if(imageType.clipArtType < 0.85 && imageType.lineDrawingType > 0.85)
+	{ return "line drawing";}
+
+	if(imageType.clipArtType < 0.85 && imageType.lineDrawingType < 0.85)
+	{ return "photo";}
 }
 
 //////COMMON LIBRARY ----------
