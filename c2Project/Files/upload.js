@@ -2,47 +2,13 @@ var imageUploaded = 0;
 var percentComplete = 0;
 var showError = false;
 var textresult = "";
+var callResult = "";
 
 	function processPhoto(base64Photo, filename)
 	{
-		//We will use that later to handle the upload, do not delete that
-		//2 parallel request, one to ask photo, other to upload on database
-		/*var uploadfiles = document.querySelector('#imageuploader');
-		var file = uploadfiles.files[0];
-		file.name = filename;
-		showError = false;
-		
-        var xhr = new XMLHttpRequest();
-        var fd = new FormData();
-        xhr.open("POST", url, true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                // Every thing ok, file uploaded
-                console.log(xhr.responseText); // handle response.
-				imageUploaded = 1;
-				textresult = "HOLAAA!"
-            }
-			else if(xhr.status == 404 && showError == false)
-			{
-				showError = true;
-				alert("Uploaded file is wrong format or size!");
-			}
-        };
-		
-		xhr.upload.addEventListener("progress", updateProgress, false);
-		xhr.addEventListener("error", transferFailed, false);			
-		
-        fd.append('upload_file', file);
-		fd.append('name', filename);
-        xhr.send(fd);	
-		*/
-		
 		AnalyzeImage(base64Photo);
-
-		// imageUploaded = 1;
-		// textresult = "You are handsome!"
-		// percentComplete = 0;
-		// showError = false;
+		
+		
 	}
 
 	
@@ -74,7 +40,6 @@ var textresult = "";
 		// Perform the REST API call.
 		jQuery.ajax({
 			url: common.uriBasePreRegion + "westeurope" +
-				//  $("#subscriptionRegionSelect").val() + 
 				 common.uriBasePostRegion + 
 				 common.uriBaseAnalyze +
 				 "?" + 
@@ -83,26 +48,29 @@ var textresult = "";
 			contentType: false,         
 			// Request headers.
 			beforeSend: function(jqXHR){
-				// jqXHR.setRequestHeader("Content-Type","application/json"); //ORIGINAL
 				jqXHR.setRequestHeader("Content-Type","application/octet-stream");
 				jqXHR.setRequestHeader("Ocp-Apim-Subscription-Key", 
-					// encodeURIComponent($("#subscriptionKeyInput").val())); //ORIGINAL
 					encodeURIComponent("41e04f3666d346c4a8b20a8222925598"));
 			},
 			
 			type: "POST",
-			
-			// Request body.
-			// data: '{"url": ' + '"' + sourceImageUrl + '"}',
 			 data: makeblob(base64data)  ,
 		})
 	
 		
 		.done(function(data) {
-			debugger;
 			imageUploaded = 1;
-			textresult = makeHuman(data);
-			percentComplete = 100;
+			callResult = makeHuman(data);
+			// percentComplete = 100; //await the second 
+			percentComplete = (data.faces.length == 0 ? 100 : 70 );
+			if(percentComplete == 100)
+			{
+				textresult = callResult;
+			} 
+			else
+			{
+				AnalyzeFaces(base64data);
+			}
 			showError = false;
 			
 		})
@@ -126,6 +94,51 @@ var textresult = "";
 		});
 	}
 
+AnalyzeFaces = function(base64data)
+{
+
+	var params = {
+		"returnFaceId": "true",
+		"returnFaceLandmarks": "false",
+		"returnFaceAttributes": "age,gender,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise",
+	};
+
+	// Perform the REST API call.
+	jQuery.ajax({
+		url: common.uriBasePreRegion + "westeurope" +
+			 common.uriBasePostRegionFaces + 
+			 common.uriBaseAnalyzeFaces +
+			 "?" + 
+			 $.param(params),
+		processData: false,
+		contentType: false,         
+		// Request headers.
+		beforeSend: function(jqXHR){
+			jqXHR.setRequestHeader("Content-Type","application/octet-stream");
+			jqXHR.setRequestHeader("Ocp-Apim-Subscription-Key", 
+				encodeURIComponent("9d9520eb8c3e451392d7949356a57c54"));
+		},
+		
+		type: "POST",
+		 data: makeblob(base64data)  ,
+	})
+
+	
+	.done(function(data) {
+		imageUploaded = 1;
+		textresult += describeFaces(data);
+		percentComplete = 100; //await the second 
+		showError = false;
+		
+	})
+	
+	.fail(function(jqXHR, textStatus, errorThrown) {
+
+		textresult = errorThrown;
+		showError = true;
+		imageUploaded = 1;
+	});
+}
 
 makeblob = function (dataURL) {
             var BASE64_MARKER = ';base64,';
@@ -148,6 +161,142 @@ makeblob = function (dataURL) {
 
             return new Blob([uInt8Array], { type: contentType });
         }
+describeFaces = function(jsonResponse)
+{
+	var str_humanResponse = "";
+
+	var index = 1;
+	jsonResponse.forEach(face => {
+		str_humanResponse += "The person number " + index.toString() + " ";
+		str_humanResponse += describeSingleFace(face);
+	});
+
+	return str_humanResponse;
+}
+
+describeSingleFace = function(face)
+{
+	var result = "";
+
+	result += expressEmotion(face.faceAttributes.emotion);
+	result += "This person is a " + (face.faceAttributes.gender == "female" ? "woman" : "man") + "."; 
+	result += isSmiling(face.faceAttributes.smile);
+	result += (face.faceAttributes.glasses != "NoGlasses"? "This person has glasses.": "");
+	result += describeFacialHair(face.faceAttributes.facialHair);
+	result += describeHeadHair(face.faceAttributes.hair);
+	result += describeMakeUp(face.faceAttributes.makeup);
+	return result;
+}
+
+describeMakeUp = function(makeup)
+{
+	var result = ""
+
+	if(makeup.eyeMakeup)
+	{
+		result += makeSentence("This person","","has","eyeMakeup","","");
+	}
+
+	if(makeup.lipMakeup)
+	{
+		result += makeSentence("This person","","has","lipMakeup","","");
+	}
+	return result;
+}
+
+describeHeadHair = function(hair)
+{
+	var result = "";
+
+	if(hair.bald > 0.75)
+	{
+		result += "This person is bald " + adverbFromConfidence(false,hair.bald,false) + ".";
+	}
+
+	var hairColor, confidence;
+	confidence = 0;
+	hairColor = "";
+
+	hair.hairColor.forEach(info => {
+		if(info.confidence> 0.85)
+		{
+			hairColor = info.color;
+		}
+	});
+
+	if(hairColor.length > 0)
+	{
+		result += makeSentence("This person","","has","hair",hairColor,"");
+	}
+	return result;
+}
+
+
+describeFacialHair = function(facialHair)
+{
+	var result = "";
+
+	var andFlag = false;
+
+	if(facialHair.moustache > 0.4)
+	{
+		result += "moustache ";
+		andFlag = true;
+	}
+
+	if(facialHair.beard > 0.4)
+	{
+		if(andFlag)
+		{
+			result += "and ";
+		}
+		result += "beard ";
+		andFlag = true;
+	}
+
+	
+	if(facialHair.sideburns > 0.4)
+	{
+		if(andFlag)
+		{
+			result += "and ";
+		}
+		result += "sideburns ";
+		andFlag = true;
+	}
+
+	if(result.length > 0)
+	{
+		result = makeSentence("This person","","has",result,"","");
+	}
+	return result;
+}
+
+
+isSmiling = function(smile)
+{
+	if(smile > 0)
+	{
+		return "This person is smiling.";
+	}
+	return "";
+}
+
+expressEmotion = function(emotion)
+{
+	var emotion,confidence;
+	confidence = 0;
+	for (var property in emotion) {
+		//if (emotion.hasOwnProperty(property)) {
+			if(emotion[property] > confidence)
+			{
+				confidence = emotion[property]; 
+				emotion = property;
+			}
+		//}
+	}
+	return "expresses " +  emotion.toString() + "."; 
+}
 
 makeHuman = function(jsonResponse)
 {
@@ -296,7 +445,9 @@ readCaptions = function(description)
 		
 		var uriBasePreRegion = "https://";
 		var uriBasePostRegion = ".api.cognitive.microsoft.com/vision/";
+		var uriBasePostRegionFaces = ".api.cognitive.microsoft.com/face/";
 		var uriBaseAnalyze = "v1.0/analyze";
+		var uriBaseAnalyzeFaces = "v1.0/detect";
 		var uriBaseLandmark = "v1.0/models/landmarks/analyze";
 		var uriBaseCelebrities = "v1.0/models/celebrities/analyze";
 		var uriBaseThumbnail = "v1.0/generateThumbnail";
@@ -406,7 +557,9 @@ readCaptions = function(description)
 			
 			uriBasePreRegion:       uriBasePreRegion,
 			uriBasePostRegion:      uriBasePostRegion,
+			uriBasePostRegionFaces:      uriBasePostRegionFaces,
 			uriBaseAnalyze:         uriBaseAnalyze,
+			uriBaseAnalyzeFaces:         uriBaseAnalyzeFaces,
 			uriBaseLandmark:        uriBaseLandmark,
 			uriBaseCelebrities:     uriBaseCelebrities,
 			uriBaseThumbnail:       uriBaseThumbnail,
