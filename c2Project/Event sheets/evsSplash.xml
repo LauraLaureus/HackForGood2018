@@ -174,7 +174,7 @@
                     <param id="1" name="Parameter {n}">Dictionary.Get(&quot;Welcome&quot;)</param>
                 </action>
                 <action id="-16" name="Wait" sid="650844251691450" type="System">
-                    <param id="0" name="Seconds">0.5</param>
+                    <param id="0" name="Seconds">1</param>
                 </action>
                 <action id="0" name="Call function" sid="561196961022546" type="Function">
                     <param id="0" name="Name">&quot;GoToLvl&quot;</param>

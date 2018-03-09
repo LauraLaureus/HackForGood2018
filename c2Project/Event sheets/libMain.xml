@@ -39,6 +39,28 @@
             <sub-events>
                 <variable constant="0" name="max_deltaY" sid="959437922704030" static="1" type="number">200</variable>
                 <variable constant="0" name="max_deltaX" sid="278580273302000" static="1" type="number">200</variable>
+                <event-block sid="175412205679156">
+                    <conditions>
+                        <condition id="17" name="On back button" sid="397233942296590" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="130786758383053" type="Function">
+                            <param id="0" name="Name">&quot;Interact_SwipeLeft&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="945213654061950">
+                    <conditions>
+                        <condition id="11" name="On menu button" sid="204489471858961" type="Browser" />
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Call function" sid="522745554954114" type="Function">
+                            <param id="0" name="Name">&quot;Interact_SwipeRight&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="206247513599680">
                     <conditions>
                         <condition id="10" name="On Nth touch start" sid="778379346986029" type="Touch">

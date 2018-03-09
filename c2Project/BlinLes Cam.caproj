@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <c2project>
-    <name>BlinLes Cam</name>
-    <description></description>
+    <name>Blinles Cam</name>
+    <description>An Instagram for Blind</description>
     <version>1.0.0.0</version>
-    <author></author>
+    <author>Rising Pixel</author>
     <author-email></author-email>
-    <author-website>http://</author-website>
-    <app-id>com.mycompany.myapp</app-id>
+    <author-website>http://www.risingpixel.com</author-website>
+    <app-id>comd.risingpixel.blinless</app-id>
     <unique-id>2m2oqhlgof90t</unique-id>
     <saved-with-version>25500</saved-with-version>
     <used-plugins>
@@ -104,21 +104,24 @@
             <object-type global="1" name="Dictionary" sid="128702865978452">
                 <plugin id="Dictionary" />
             </object-type>
+            <object-type name="Audio" sid="681567462025404">
+                <plugin id="Audio" />
+            </object-type>
         </object-folder>
         <object-folder name="UI">
             <object-type name="logo" sid="234856133828976">
                 <plugin id="Sprite" />
                 <animation-folder>
                     <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="268119155401988" speed="5">
-                        <frame duration="1" hotspotX="0.504274" hotspotY="0.5" original-source="C:\Users\tatog\Downloads\picture-20180309T151356Z-001\picture\logo.png">
+                        <frame duration="1" hotspotX="0.508547" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\logo.png">
                             <collision-poly>
-                                <point x="0.0683761" y="0.0125" />
-                                <point x="0.786325" y="0.45" />
-                                <point x="0.991453" y="0.4875" />
-                                <point x="0.786325" y="0.5375" />
-                                <point x="0.5" y="0.95" />
-                                <point x="0.0641026" y="0.9875" />
-                                <point x="0.0042735" y="0.4875" />
+                                <point x="0" y="0" />
+                                <point x="0.858207" y="0.390625" />
+                                <point x="1" y="0.467969" />
+                                <point x="0.858207" y="0.571094" />
+                                <point x="0.502137" y="1" />
+                                <point x="0" y="1" />
+                                <point x="0" y="0.467969" />
                             </collision-poly>
                         </frame>
                     </animation>
@@ -237,8 +240,45 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="Audio" sid="681567462025404">
-            <plugin id="Audio" />
+        <object-type name="share_icon" sid="770268502908524">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="642184628565942" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.501916" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\share_icon.png">
+                        <collision-poly>
+                            <point x="0.29375" y="0.310345" />
+                            <point x="0.5" y="0.183908" />
+                            <point x="0.7875" y="0.501916" />
+                            <point x="0.7625" y="0.727969" />
+                            <point x="0.5" y="0.992337" />
+                            <point x="0.26875" y="0.708812" />
+                            <point x="0.1875" y="0.501916" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="back_icon" sid="208772771271199">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="514896772154464" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\back_icon.png">
+                        <collision-poly>
+                            <point x="0.246575" y="0.289063" />
+                            <point x="0.5" y="0.199219" />
+                            <point x="0.630137" y="0.359375" />
+                            <point x="0.794521" y="0.5" />
+                            <point x="0.780822" y="0.726562" />
+                            <point x="0.5" y="0.785156" />
+                            <point x="0.00684937" y="0.847656" />
+                            <point x="0.246575" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="lblInit2" sid="483770413417296">
+            <plugin id="Text" />
         </object-type>
     </object-folder>
     <families>
@@ -267,6 +307,7 @@
             <members>
                 <member>lblCurrentScreen</member>
                 <member>lblInit</member>
+                <member>lblInit2</member>
             </members>
         </family>
     </families>

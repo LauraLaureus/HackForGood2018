@@ -21,6 +21,18 @@
                     <param id="0" name="Variable">PhotoStatus</param>
                     <param id="1" name="Value">0</param>
                 </action>
+                <action id="-15" name="Set visible" sid="930691962115437" type="lblInit">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="0" name="Set text" sid="245999431489625" type="lblInit">
+                    <param id="0" name="Text">&quot;&quot;</param>
+                </action>
+                <action id="-15" name="Set visible" sid="387411941109224" type="share_icon">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-15" name="Set visible" sid="631316715276178" type="sprTxtToSnap">
+                    <param id="0" name="Visibility">1</param>
+                </action>
             </actions>
         </event-block>
         <variable constant="0" name="PhotoStatus" sid="291671218238266" static="0" type="number">0</variable>
@@ -81,6 +93,10 @@
                 </condition>
             </conditions>
             <actions>
+                <action id="14" name="Log" sid="790383612126566" type="Browser">
+                    <param id="0" name="Type">0</param>
+                    <param id="1" name="Message">&quot;BACK&quot;</param>
+                </action>
                 <action id="0" name="Call function" sid="546775900423911" type="Function">
                     <param id="0" name="Name">&quot;GoToLvl&quot;</param>
                     <param id="1" name="Parameter {n}">&quot;lvlMain&quot;</param>
@@ -107,6 +123,10 @@
                         <action id="0" name="Call function" sid="557609613027717" type="Function">
                             <param id="0" name="Name">&quot;Speak_UI&quot;</param>
                             <param id="1" name="Parameter {n}">&quot;Sharing photo!&quot;</param>
+                        </action>
+                        <action id="0" name="Call function" sid="500821815660694" type="Function">
+                            <param id="0" name="Name">&quot;Share_Photo&quot;</param>
+                            <param id="1" name="Parameter {n}"></param>
                         </action>
                     </actions>
                 </event-block>
@@ -178,6 +198,9 @@
                 <action id="0" name="Set text" sid="718721316866640" type="lblInit">
                     <param id="0" name="Text">Function.Param(0)</param>
                 </action>
+                <action id="0" name="Set text" sid="127263861795862" type="lblInit2">
+                    <param id="0" name="Text">Function.Param(0)</param>
+                </action>
                 <action id="0" name="Call function" sid="666161612171170" type="Function">
                     <param id="0" name="Name">&quot;Speak_UI&quot;</param>
                     <param id="1" name="Parameter {n}">Function.Param(0)</param>
@@ -188,12 +211,62 @@
                 </action>
                 <action id="0" name="Call function" sid="484705227155558" type="Function">
                     <param id="0" name="Name">&quot;Speak_UI&quot;</param>
-                    <param id="1" name="Parameter {n}">&quot;Swipe right to share photo!&quot;</param>
+                    <param id="1" name="Parameter {n}">&quot;Swipe right to share photo, swipe left to go back.&quot;</param>
                 </action>
                 <action id="-16" name="Set opacity" sid="341647542142575" type="Canvas">
                     <param id="0" name="Opacity">40</param>
                 </action>
                 <action id="-15" name="Set visible" sid="841393297376802" type="lblInit">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="594512812286551" type="share_icon">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="899791658381907" type="sprTxtToSnap">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="158034380089826">
+            <conditions>
+                <condition id="0" name="On function" sid="395179912027723" type="Function">
+                    <param id="0" name="Name">&quot;Share_Photo&quot;</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-4" name="Set layer visible" sid="795988846032776" type="System">
+                    <param id="0" name="Layer">&quot;ScrenShot&quot;</param>
+                    <param id="1" name="Visibility">1</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="384440362541378" type="Canvas">
+                    <param id="0" name="Opacity">100</param>
+                </action>
+                <action id="-15" name="Set visible" sid="603662415732986" type="lblInit">
+                    <param id="0" name="Visibility">0</param>
+                </action>
+                <action id="-27" name="Snapshot canvas" sid="447957914028279" type="System">
+                    <param id="0" name="Format">0</param>
+                    <param id="1" name="JPEG quality">75</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="853093565957040">
+            <conditions>
+                <condition id="-26" name="On canvas snapshot" sid="467428759711746" type="System" />
+            </conditions>
+            <actions>
+                <action id="13" name="Invoke download" sid="199130051920173" type="Browser">
+                    <param id="0" name="URL">CanvasSnapshot</param>
+                    <param id="1" name="Filename">&quot;blincam&quot;&amp;left(lblInit2.Text, 100)&amp;&quot;.png&quot;</param>
+                </action>
+                <action id="-4" name="Set layer visible" sid="585930791385101" type="System">
+                    <param id="0" name="Layer">&quot;ScrenShot&quot;</param>
+                    <param id="1" name="Visibility">0</param>
+                </action>
+                <action id="-16" name="Set opacity" sid="847094885390385" type="Canvas">
+                    <param id="0" name="Opacity">40</param>
+                </action>
+                <action id="-15" name="Set visible" sid="102220845436533" type="lblInit">
                     <param id="0" name="Visibility">1</param>
                 </action>
             </actions>
