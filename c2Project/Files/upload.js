@@ -6,6 +6,12 @@ var callResult = "";
 
 	function processPhoto(base64Photo, filename)
 	{
+		imageUploaded = 0;
+		percentComplete = 0;
+		showError = false;
+		textresult = "";
+		callResult = "";
+
 		AnalyzeImage(base64Photo);
 	}
 
@@ -169,6 +175,7 @@ describeFaces = function(jsonResponse)
 		if(jsonResponse.length > 1)
 		{
 			str_humanResponse += "The person number " + index.toString() + " ";
+			index += 1;
 		}
 		else
 		{
