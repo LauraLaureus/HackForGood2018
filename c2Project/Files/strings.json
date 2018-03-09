@@ -1,0 +1,28 @@
+{
+  "c2dictionary": true,
+  "data": {
+    "Welcome": "Welcome to this app..blbla",
+    "Instruction": "This app work like that..blabla",
+    "Credits": "This app work is made by me",
+    "LoadingBase": "Please be patient, I'm making stuff",
+    "Uploading": "Uploading photo, I'll try to describe it for you...",
+    "Error": "Shit happens, And somethings goes wrong...sorry",
+    "Connection":"Please check your connection!",
+    "Update": "An update is avaiable! I'll get better!",
+    "Ajax_error":"Remote request goes wrong",
+    "Permission":"Please accept permission, I'll need it for do magic stuff",
+    "Unsupported": "Your browser/device seems doesn't support some stuff, please update or find a better browser like Chrome",
+    "Next":"Next",
+    "Prev":"Previous",
+    "lvlMain_base": "Main screen",
+    "lvlMain_help": "Tap on top to enter photo mode, Tap on bottom to get your feed",
+    "lvlFeed_base": "Feed screen",
+    "lvlFeed_help": "Tap on top to get previous photo, Tap on bottom to get next photo. Swipe right to know more, swipe left to go back.",
+    "lvlComments_base": "Comment screen",
+    "lvlComment_help": "Bla bla bla.Swipe right to share the photo outside, Swipe left to go back.",  
+    "lvlPhoto_base": "Photo screen",
+    "lvlPhoto_help": "Tap to snap a photo. swipe left to go back.",
+    "lvlPhoto_base": "Photo screen",
+    "lvlPhoto_help": "Tap to snap a photo. swipe left to go back." 
+  }
+}
