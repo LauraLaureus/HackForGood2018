@@ -255,6 +255,9 @@
                 <condition id="-26" name="On canvas snapshot" sid="467428759711746" type="System" />
             </conditions>
             <actions>
+                <action id="0" name="Execute" sid="274270514291165" type="CallJSShare">
+                    <param id="0" name="Value">&quot;sharePhoto(&apos;&quot;&amp;CanvasSnapshot&amp;&quot;&apos;, &apos;description&apos;);&quot;</param>
+                </action>
                 <action id="13" name="Invoke download" sid="199130051920173" type="Browser">
                     <param id="0" name="URL">CanvasSnapshot</param>
                     <param id="1" name="Filename">&quot;blincam&quot;&amp;left(lblInit2.Text, 100)&amp;&quot;.png&quot;</param>
