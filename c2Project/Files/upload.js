@@ -219,7 +219,6 @@ imageType = function (imageType)
 	var verb = "is";
 
 	var directObj = chooseOneImageType(imageType);
-	debugger;
 	return makeSentence(subject,"",verb,directObj,"","");
 }
 
@@ -233,6 +232,19 @@ chooseOneImageType = function(imageType)
 
 	if(imageType.clipArtType < 0.85 && imageType.lineDrawingType < 0.85)
 	{ return "photo";}
+}
+
+adultContent = function(adult)
+{
+	var result = "";
+	var subject = "The content of this image";
+	var verb = "is";
+
+	if(adult.isAdultContent)
+		result += makeSentence(subject,"",verb,"adult content","",adverbFromConfidence(false,adult.adultScore,true));
+	if(adult.isRacyContent)
+		result += makeSentence(subject,"",verb,"racy content","",adverbFromConfidence(false,adult.racyScore,true))
+	return result;
 }
 
 //////COMMON LIBRARY ----------
