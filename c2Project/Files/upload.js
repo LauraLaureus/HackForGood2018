@@ -159,7 +159,8 @@ makeHuman = function(jsonResponse)
 
 	str_humanResponse += imageType(jsonResponse.imageType);
 	str_humanResponse += adultContent(jsonResponse.adult);
-	// str_humanResponse +=
+	str_humanResponse += facesContent(jsonResponse.faces);
+	str_humanResponse += readCaptions(jsonResponse.description);
 
 	console.log(str_humanResponse);
 	return str_humanResponse;
@@ -246,6 +247,40 @@ adultContent = function(adult)
 		result += makeSentence(subject,"",verb,"racy content","",adverbFromConfidence(false,adult.racyScore,true))
 	return result;
 }
+
+facesContent = function(faces)
+{
+	var result = "";
+	if(faces.length >  0)
+	{
+		faces.forEach(face => {
+			//describeFace(face);
+			var subj = "There";
+			var verb = "is a "; 
+			var dirObj = face.gender === "Female" ? "woman" : "man";
+			var adj = face.age.toString() + (face.age > 1 ? " years" : "year") + " old";
+			result += makeSentence(subj,"",verb,dirObj,adj,"");	
+		});
+	}
+	return result;
+
+}
+
+readCaptions = function(description)
+{
+	var result = "";
+
+	if(description.captions.length > 0)
+	{
+		result += "This picture can be described as: ";
+	}
+	description.captions.forEach(caption => {
+		result += caption.text + ".";
+	});
+
+	return result;
+}
+
 
 //////COMMON LIBRARY ----------
 	var common = (function()
