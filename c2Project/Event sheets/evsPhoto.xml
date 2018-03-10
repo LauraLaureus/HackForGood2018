@@ -13,7 +13,7 @@
                     <param id="0" name="Text">&quot;PHOTO&quot;</param>
                 </action>
                 <action id="0" name="Request camera" sid="469913889640662" type="UserMedia">
-                    <param id="0" name="Source">1</param>
+                    <param id="0" name="Source">0</param>
                     <param id="1" name="Preferred width">0</param>
                     <param id="2" name="Preferred height">0</param>
                 </action>
@@ -160,7 +160,7 @@
                     <param id="0" name="Variable">PhotoStatus</param>
                     <param id="1" name="Value">1</param>
                 </action>
-                <action id="-16" name="Wait" sid="228103643527614" type="System">
+                <action disabled="1" id="-16" name="Wait" sid="228103643527614" type="System">
                     <param id="0" name="Seconds">0.1</param>
                 </action>
                 <action id="0" name="Play" sid="685732029234470" type="Audio">

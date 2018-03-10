@@ -287,7 +287,7 @@
             <plugin id="Sprite" />
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="787827071541117" speed="5">
-                    <frame duration="1" format="jpeg" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\welcome.png" quality="75">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\welcome.png">
                         <collision-poly>
                             <point x="0.5" y="0.388769" />
                             <point x="0.5" y="0.074514" />
