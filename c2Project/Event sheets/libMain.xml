@@ -15,7 +15,7 @@
         <variable comment="Tempo massimo di attesa prima di errore" constant="1" name="CCON_TIMEOUT" sid="434731935076487" static="0" type="number">300</variable>
         <variable comment="html5 cache blob image" constant="0" name="Upload_BLOB" sid="147195885498941" static="0" type="text"></variable>
         <variable comment="Nome file uploadato" constant="0" name="CustomName" sid="500236237963371" static="0" type="text">testName</variable>
-        <event-group description="" sid="660997081783785" title="Lib_RequestFullScreen">
+        <event-group description="" inactive="1" sid="660997081783785" title="Lib_RequestFullScreen">
             <sub-events>
                 <event-block sid="917173611028117">
                     <conditions>

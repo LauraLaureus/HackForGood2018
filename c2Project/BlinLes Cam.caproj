@@ -173,6 +173,25 @@
                     </animation>
                 </animation-folder>
             </object-type>
+            <object-type name="back_icon" sid="208772771271199">
+                <plugin id="Sprite" />
+                <animation-folder>
+                    <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="514896772154464" speed="5">
+                        <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\back_icon.png">
+                            <collision-poly>
+                                <point x="0.246575" y="0.289063" />
+                                <point x="0.5" y="0.199219" />
+                                <point x="0.630137" y="0.359375" />
+                                <point x="0.794521" y="0.5" />
+                                <point x="0.780822" y="0.726562" />
+                                <point x="0.5" y="0.785156" />
+                                <point x="0.00684937" y="0.847656" />
+                                <point x="0.246575" y="0.5" />
+                            </collision-poly>
+                        </frame>
+                    </animation>
+                </animation-folder>
+            </object-type>
         </object-folder>
         <object-folder name="SysStuff">
             <object-type name="sysTouchEnd" sid="155690389717264">
@@ -261,25 +280,6 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="back_icon" sid="208772771271199">
-            <plugin id="Sprite" />
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="514896772154464" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\back_icon.png">
-                        <collision-poly>
-                            <point x="0.246575" y="0.289063" />
-                            <point x="0.5" y="0.199219" />
-                            <point x="0.630137" y="0.359375" />
-                            <point x="0.794521" y="0.5" />
-                            <point x="0.780822" y="0.726562" />
-                            <point x="0.5" y="0.785156" />
-                            <point x="0.00684937" y="0.847656" />
-                            <point x="0.246575" y="0.5" />
-                        </collision-poly>
-                    </frame>
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="lblInit2" sid="483770413417296">
             <plugin id="Text" />
         </object-type>
@@ -317,19 +317,6 @@
                 </animation>
             </animation-folder>
         </object-type>
-        <object-type name="fake" sid="249222526406959">
-            <plugin id="Sprite" />
-            <behaviors>
-                <behavior-type name="Fade" sid="188614631464664">
-                    <behavior id="Fade" />
-                </behavior-type>
-            </behaviors>
-            <animation-folder>
-                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="599615727380542" speed="5">
-                    <frame duration="1" hotspotX="0.5" hotspotY="0.500443" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\fake.png" />
-                </animation>
-            </animation-folder>
-        </object-type>
         <object-type name="sprFakePhoto" sid="599781969069534">
             <plugin id="Sprite" />
             <animation-folder>
@@ -352,6 +339,14 @@
             <animation-folder>
                 <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="788227703190021" speed="5">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="comment" sid="551366268553283">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="618569256626899" speed="5">
+                    <frame duration="1" format="jpeg" hotspotX="0.5" hotspotY="0.5" original-source="C:\Cloud\gdrive\HACK4GOOD 2018\02 Graphic\picture\comment.png" quality="75" />
                 </animation>
             </animation-folder>
         </object-type>
